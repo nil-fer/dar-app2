@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  weight_type: MyString
+  quantity: 1
+  price: 1
+  sale_price: 1
+  company_name: MyString
+
+two:
+  name: MyString
+  weight_type: MyString
+  quantity: 1
+  price: 1
+  sale_price: 1
+  company_name: MyString

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dar</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= link_to 'Каталог товаров', categories_path %>
+    <%= link_to 'Список заведений' %>
+    <%= link_to 'Специальные предложения'%>
+    <nav>
+      <div>
+        <%= link_to 'Фид', feed_index_url %>
+        <%= link_to 'Продукты', products_path %>
+        <%= link_to 'Партии', batches_path if can? :index, Batch %>
+      </div>
+
+
+      <div>
+
+        <% if user_signed_in? %>
+          <%= link_to current_user.company_name, users_profile_url %>
+          <%= link_to('Выйти', destroy_user_session_path, method: :delete) %>
+        <% else %>
+          <%= link_to('Войти', new_user_session_path) %>
+          <%= link_to('Регистрация', new_user_registration_path) %>
+        <% end %>
+      </div>
+    </nav>
+
+  <%= yield %>
+
+  </body>
+</html>

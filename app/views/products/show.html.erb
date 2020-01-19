@@ -1,0 +1,42 @@
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= Category.find(@product.category_id).title %>
+</p>
+
+<p>
+  <strong>Weight type:</strong>
+  <%= @product.weight_type %>
+</p>
+
+<p>
+  <strong>Quantity:</strong>
+  <%= @product.quantity %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Sale price:</strong>
+  <%= @product.sale_price %>
+</p>
+
+<p>
+  <strong>Company name:</strong>
+  <%= @product.company_name %>
+</p>
+
+<p>
+  <strong>Batch:</strong>
+  <%= @product.batch_id %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
