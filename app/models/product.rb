@@ -1,8 +1,9 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
-  has_one :category
-  belongs_to :batch
+  belongs_to :batch, required: false
 
   # data enumerizers
-  enum weight_type: [ 'на вес', 'в порциях' ]
-  enum category: [ 'Кулинария', 'Выпечка', 'Фрукты и овощи', 'Мясо', 'Напитки', 'Сладкое' ]
+  enum weight_type: ['на вес', 'в порциях']
+  enum category: ['Кулинария', 'Выпечка', 'Фрукты и овощи', 'Мясо', 'Напитки', 'Сладкое']
 end

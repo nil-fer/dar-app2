@@ -1,29 +1,22 @@
-class BatchesController < ApplicationController
-  before_action :set_batch, only: [:show, :edit, :update, :destroy]
+# frozen_string_literal: true
 
-  # GET /batches
-  # GET /batches.json
+class BatchesController < ApplicationController
+  before_action :set_batch, only: %i[show edit update destroy]
+
   def index
     @batches = Batch.all
   end
 
-  # GET /batches/1
-  # GET /batches/1.json
   def show
     @products = @batch.products
   end
 
-  # GET /batches/new
   def new
     @batch = Batch.new
   end
 
-  # GET /batches/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /batches
-  # POST /batches.json
   def create
     @batch = Batch.new(batch_params)
 
@@ -38,8 +31,6 @@ class BatchesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /batches/1
-  # PATCH/PUT /batches/1.json
   def update
     respond_to do |format|
       if @batch.update(batch_params)
@@ -52,8 +43,6 @@ class BatchesController < ApplicationController
     end
   end
 
-  # DELETE /batches/1
-  # DELETE /batches/1.json
   def destroy
     @batch.destroy
     respond_to do |format|
@@ -63,13 +52,12 @@ class BatchesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_batch
-      @batch = Batch.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def batch_params
-      params.require(:batch).permit(:company_name)
-    end
+  def set_batch
+    @batch = Batch.find(params[:id])
+  end
+
+  def batch_params
+    params.require(:batch).permit(:company_name)
+  end
 end

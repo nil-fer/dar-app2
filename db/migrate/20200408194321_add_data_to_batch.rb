@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class AddDataToBatch < ActiveRecord::Migration[5.2]
   def change
     add_column :batches, :activation_start, :datetime

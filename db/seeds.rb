@@ -1,33 +1,35 @@
+# frozen_string_literal: true
+
 Rake::Task['db:drop'].invoke
 Rake::Task['db:create'].invoke
 Rake::Task['db:migrate'].invoke
 
 # create users
-@users = [
+users = [
   {
-    email:        'admin@admin.com',
+    email: 'admin@admin.com',
     company_name: 'Администратор',
-    role:         'admin'
- }, {
-    email:        'retailer1@retailer.com',
+    role: 'admin'
+  }, {
+    email: 'retailer1@retailer.com',
     company_name: 'Перекрёсток',
-    role:         'retailer'
+    role: 'retailer'
   }, {
-    email:        'retailer2@retailer.com',
+    email: 'retailer2@retailer.com',
     company_name: 'Братья Караваевы',
-    role:         'retailer'
+    role: 'retailer'
   }, {
-    email:        'retailer3@retailer.com',
+    email: 'retailer3@retailer.com',
     company_name: 'Хлеб Насущный',
-    role:         'retailer'
+    role: 'retailer'
   }, {
-    email:        'retailer4@retailer.com',
+    email: 'retailer4@retailer.com',
     company_name: 'ВкусВилл',
-    role:         'retailer'
+    role: 'retailer'
   }, {
-    email:        'retailer5@retailer.com',
+    email: 'retailer5@retailer.com',
     company_name: 'Француская пекарня',
-    role:         'retailer'
+    role: 'retailer'
   }
 ]
 
@@ -35,28 +37,24 @@ def create_users(user)
   password = 'testtest'
 
   User.create(
-    email:                 user[:email],
-    company_name:          user[:company_name],
-    role:                  user[:role],
-    password:              password,
+    email: user[:email],
+    company_name: user[:company_name],
+    role: user[:role],
+    password: password,
     password_confirmation: password
   )
 end
 
-@users.each do |user|
+users.each do |user|
   u = create_users(user)
   puts "User with #{u.email} created"
 end
 
-# Create random users
 def random_users
   rand(2..5)
 end
 
-# Product info && fake data methods
-@weight_types = [ 'кг', 'г', 'шт', 'порция' ]
-@sales = [ '25%', '50%', '70%' ]
-@product_names = [ 'Бананы', 'Молоко', 'Рыба', 'Хотдог', 'Бутерброд', 'Макароны' ]
+product_names = %w[Бананы Молоко Рыба Хотдог Бутерброд Макароны]
 
 def random_weight_type
   rand(0..1)
@@ -82,87 +80,54 @@ def upload_fake_product_pic
   uploader
 end
 
-
-@categories = [ "Кулинария", "Выпечка", "Фрукты и овощи", "Мясо", "Напитки", "Сладкое" ]
-
-Batch.create([
+Product.create!([
   {
-    company_name: "1"
-  },{
-    company_name: "2"
+    name: product_names.sample,
+    weight_type: random_weight_type,
+    weight_quantity: random_weight_quantity,
+    price: random_price,
+    category: random_category,
+    product_pic: upload_fake_product_pic,
+    user_id: random_users
+  }, {
+    name: product_names.sample,
+    weight_type: random_weight_type,
+    weight_quantity: random_weight_quantity,
+    price: random_price,
+    category: random_category,
+    product_pic: upload_fake_product_pic,
+    user_id: random_users
+  }, {
+    name: product_names.sample,
+    weight_type: random_weight_type,
+    weight_quantity: random_weight_quantity,
+    price: random_price,
+    category: random_category,
+    product_pic: upload_fake_product_pic,
+    user_id: random_users
+  }, {
+    name: product_names.sample,
+    weight_type: random_weight_type,
+    weight_quantity: random_weight_quantity,
+    price: random_price,
+    category: random_category,
+    product_pic: upload_fake_product_pic,
+    user_id: random_users
+  }, {
+    name: product_names.sample,
+    weight_type: random_weight_type,
+    weight_quantity: random_weight_quantity,
+    price: random_price,
+    category: random_category,
+    product_pic: upload_fake_product_pic,
+    user_id: random_users
+  }, {
+    name: product_names.sample,
+    weight_type: random_weight_type,
+    weight_quantity: random_weight_quantity,
+    price: random_price,
+    category: random_category,
+    product_pic: upload_fake_product_pic,
+    user_id: random_users
   }
 ])
-
-Product.create([
-  {
-    name:           @product_names.sample,
-    weight_type:     random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price:           random_price,
-    category:        random_category,
-    product_pic:     upload_fake_product_pic,
-    user_id:         random_users
-  },{
-    name:           @product_names.sample,
-    weight_type:     random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price:           random_price,
-    category:        random_category,
-    product_pic:     upload_fake_product_pic,
-    user_id:         random_users
-  },{
-    name:           @product_names.sample,
-    weight_type:     random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price:           random_price,
-    category:        random_category,
-    product_pic:     upload_fake_product_pic,
-    user_id:         random_users
-  },{
-    name:           @product_names.sample,
-    weight_type:     random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price:           random_price,
-    category:        random_category,
-    product_pic:     upload_fake_product_pic,
-    user_id:         random_users
-  },{
-    name:           @product_names.sample,
-    weight_type:     random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price:           random_price,
-    category:        random_category,
-    product_pic:     upload_fake_product_pic,
-    user_id:         random_users
-  },{
-    name:           @product_names.sample,
-    weight_type:     random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price:           random_price,
-    category:        random_category,
-    product_pic:     upload_fake_product_pic,
-    user_id:         random_users
-  }
-]
-
-def create_product(product)
-  Product.create(
-    name:            product[:name],
-    weight_type:     product[:weight_type],
-    weight_quantity: product[:weight_quantity],
-    price:           product[:price],
-    category:        product[:category],
-    product_pic:     product[:product_pic],
-    user_id:         product[:user_id]
-  )
-end
-
-@products.each do |product|
-  p = create_product(product)
-
-  if p.save
-    puts "Product #{p.name} created"
-  else
-    puts "Product #{p.name} not created"
-  end
-end
