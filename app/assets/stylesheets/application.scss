@@ -37,7 +37,7 @@ a:hover {
 }
 
 .container {
-  width: 1200px;
+  width: 1280px;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -67,6 +67,8 @@ footer {
   flex-wrap: wrap;
 }
 
-.footer p.small-p.grey {
-  margin-left: 32px;
+.footer {
+  p {
+    margin-left: 32px;
+  }
 }

@@ -1,11 +1,11 @@
 @import 'mixins';
 
-.company_container {
+.outlet_container {
   height: 194px;
   display: flex;
   flex-direction: column;
 
-  .company_banner {
+  .outlet_banner {
     background-image: url("background_bred.png");
     left: 0;
     height: inherit;
@@ -13,7 +13,7 @@
     position: absolute;
   }
 
-  .company_info {
+  .outlet_info {
     z-index: 3000;
     margin-top: 64px;
     display: flex;
@@ -36,7 +36,7 @@
   background-image: url("instruction_banner.png");
 }
 
-.company_card {
+.outlet_card {
   width: 372px;
   height: 294px;
   border: 1px solid $grey;
@@ -54,7 +54,7 @@
     flex: 1 0 auto;
   }
 
-  .item_card_info {
+  .outlet_card_info {
     width: inherit;
     height: auto;
     min-height: 120px;

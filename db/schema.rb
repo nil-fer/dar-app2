@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -10,29 +12,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_12_192046) do
-
+ActiveRecord::Schema.define(version: 20_200_412_192_046) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "hstore"
-  enable_extension "plpgsql"
+  enable_extension 'hstore'
+  enable_extension 'plpgsql'
 
-  create_table "batches", force: :cascade do |t|
-    t.datetime "activation_start"
-    t.datetime "activation_end"
-    t.integer "discount"
-    t.integer "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'batches', force: :cascade do |t|
+    t.datetime 'activation_start'
+    t.datetime 'activation_end'
+    t.integer 'discount'
+    t.integer 'user_id'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "batches_products", force: :cascade do |t|
-    t.bigint "batch_id"
-    t.bigint "product_id"
-    t.integer "quantity"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["batch_id"], name: "index_batches_products_on_batch_id"
-    t.index ["product_id"], name: "index_batches_products_on_product_id"
+  create_table 'batches_products', force: :cascade do |t|
+    t.bigint 'batch_id'
+    t.bigint 'product_id'
+    t.integer 'quantity'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['batch_id'], name: 'index_batches_products_on_batch_id'
+    t.index ['product_id'], name: 'index_batches_products_on_product_id'
+  end
+
+  create_table 'companies', force: :cascade do |t|
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'company_name'
+    t.integer 'user_id'
+    t.string 'logo'
+    t.string 'company_cover'
   end
 
   create_table "companies", force: :cascade do |t|
@@ -50,16 +60,16 @@ ActiveRecord::Schema.define(version: 2020_04_12_192046) do
     t.string "email"
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name"
-    t.integer "price"
-    t.string "weight_type"
-    t.string "weight_amount"
-    t.string "product_pic"
-    t.integer "user_id"
-    t.integer "category"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'products', force: :cascade do |t|
+    t.string 'name'
+    t.integer 'price'
+    t.string 'weight_type'
+    t.string 'weight_amount'
+    t.string 'product_pic'
+    t.integer 'user_id'
+    t.integer 'category'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -78,6 +88,6 @@ ActiveRecord::Schema.define(version: 2020_04_12_192046) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "batches_products", "batches"
-  add_foreign_key "batches_products", "products"
+  add_foreign_key 'batches_products', 'batches'
+  add_foreign_key 'batches_products', 'products'
 end

@@ -77,53 +77,53 @@ def upload_fake_product_pic
 end
 
 Product.create!([
-  {
-    name: product_names.sample,
-    weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price: random_price,
-    category: random_category,
-    product_pic: upload_fake_product_pic,
-    user_id: random_users
-  }, {
-    name: product_names.sample,
-    weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price: random_price,
-    category: random_category,
-    product_pic: upload_fake_product_pic,
-    user_id: random_users
-  }, {
-    name: product_names.sample,
-    weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price: random_price,
-    category: random_category,
-    product_pic: upload_fake_product_pic,
-    user_id: random_users
-  }, {
-    name: product_names.sample,
-    weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price: random_price,
-    category: random_category,
-    product_pic: upload_fake_product_pic,
-    user_id: random_users
-  }, {
-    name: product_names.sample,
-    weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price: random_price,
-    category: random_category,
-    product_pic: upload_fake_product_pic,
-    user_id: random_users
-  }, {
-    name: product_names.sample,
-    weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
-    price: random_price,
-    category: random_category,
-    product_pic: upload_fake_product_pic,
-    user_id: random_users
-  }
-])
+                  {
+                    name: product_names.sample,
+                    weight_type: random_weight_type,
+                    weight_quantity: random_weight_quantity,
+                    price: random_price,
+                    category: random_category,
+                    product_pic: upload_fake_product_pic,
+                    user_id: random_users
+                  }, {
+                    name: product_names.sample,
+                    weight_type: random_weight_type,
+                    weight_quantity: random_weight_quantity,
+                    price: random_price,
+                    category: random_category,
+                    product_pic: upload_fake_product_pic,
+                    user_id: random_users
+                  }, {
+                    name: product_names.sample,
+                    weight_type: random_weight_type,
+                    weight_quantity: random_weight_quantity,
+                    price: random_price,
+                    category: random_category,
+                    product_pic: upload_fake_product_pic,
+                    user_id: random_users
+                  }, {
+                    name: product_names.sample,
+                    weight_type: random_weight_type,
+                    weight_quantity: random_weight_quantity,
+                    price: random_price,
+                    category: random_category,
+                    product_pic: upload_fake_product_pic,
+                    user_id: random_users
+                  }, {
+                    name: product_names.sample,
+                    weight_type: random_weight_type,
+                    weight_quantity: random_weight_quantity,
+                    price: random_price,
+                    category: random_category,
+                    product_pic: upload_fake_product_pic,
+                    user_id: random_users
+                  }, {
+                    name: product_names.sample,
+                    weight_type: random_weight_type,
+                    weight_quantity: random_weight_quantity,
+                    price: random_price,
+                    category: random_category,
+                    product_pic: upload_fake_product_pic,
+                    user_id: random_users
+                  }
+                ])

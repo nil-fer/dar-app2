@@ -1,6 +1,6 @@
-.company_container
-  .company_banner
-  .company_info
+.outlet_container
+  .outlet_banner
+  .outlet_info
     h1  Перекресток на Юго-Западной
     h4
       span
@@ -19,10 +19,9 @@
 .batch
   .batch_block
     .batch_block_title
-      h3 Акции до 8 вечера
-      a.orange Показать все
+      h2 Акции до 8 вечера
 
     .batch_block_cards
-      = render partial: 'company_card', collection: @companies_batch, as: :product_card
+      = render partial: 'products/product_card', collection: @products, as: :product_card
 
 .banner
