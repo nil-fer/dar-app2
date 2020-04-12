@@ -1,0 +1,88 @@
+@import 'mixins';
+
+.company_container {
+  height: 194px;
+  display: flex;
+  flex-direction: column;
+
+  .company_banner {
+    background-image: url("background_bred.png");
+    left: 0;
+    height: inherit;
+    width: 100vw;
+    position: absolute;
+  }
+
+  .company_info {
+    z-index: 3000;
+    margin-top: 64px;
+    display: flex;
+    align-items: center;
+
+    h4 {
+      padding-top: 2px;
+      display: inherit;
+      @include fire_icon;
+    }
+  }
+
+  .location {
+    margin-top: 4px;
+  }
+}
+
+.banner {
+  @include banner;
+  background-image: url("instruction_banner.png");
+}
+
+.company_card {
+  width: 372px;
+  height: 294px;
+  border: 1px solid $grey;
+  @include border_radius;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  .cover {
+    width: inherit;
+    background-color: $orange;
+    border-radius: 6px 6px 0 0;
+    min-height: 146px;
+    max-height: 174px;
+    flex: 1 0 auto;
+  }
+
+  .item_card_info {
+    width: inherit;
+    height: auto;
+    min-height: 120px;
+    background-color: $white;
+    flex: 0 1 auto;
+
+    h3 {
+      margin-top: 16px;
+      width: 246px;
+    }
+
+    .details,
+    h3 {
+      margin-left: 16px;
+    }
+
+    .details {
+      bottom: 0;
+      margin-top: 2px;
+      margin-bottom: 16px;
+      display: flex;
+      flex-direction: row;
+
+      span {
+        margin: 0 8px;
+      }
+
+      p.orange {}
+    }
+  }
+}
