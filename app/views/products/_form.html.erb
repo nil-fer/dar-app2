@@ -12,12 +12,13 @@
   <% end %>
 
   <div class="field">
-      <%= form.file_field :image %>
+    <%= form.label "Название продукта" %>
+    <%= form.text_field :name %>
   </div>
 
   <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.label "Фото продукта" %>
+    <%= form.file_field :product_pic %>
   </div>
 
   <div class="field">
@@ -31,24 +32,19 @@
   </div>
 
   <div class="field">
-    <%= form.label :price %>
+    <%= form.label "Вес продукта/порции" %>
+    <%= form.text_field :weight_quantity %>
+  </div>
+
+  <div class="field">
+    <%= form.label "Цена в рублях" %>
     <%= form.number_field :price %>
   </div>
 
-  <div class="field">
-    <%= form.label :sale_price %>
-    <%= form.number_field :sale_price %>
-  </div>
-
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :batch_id %>
-    <%= select("product", "batch_id", Batch.all.collect {|b| [b.company_name, b.id]}) %>
-  </div>
+  <!-- <div class="field"> -->
+    <%#= form.label :company_name %>
+    <%#= form.text_field :company_name %>
+  <!-- </div> -->
 
   <div class="actions">
     <%= form.submit %>

@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 class Product < ApplicationRecord
-  belongs_to :batch, required: false
+  has_many :batches_products, dependent: :destroy
+  has_many :batches, through: :batches_products
+  belongs_to :user
+
+  mount_uploader :product_pic, ProductPicUploader
 
   # data enumerizers
   enum weight_type: ['на вес', 'в порциях']

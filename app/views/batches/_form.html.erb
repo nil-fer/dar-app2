@@ -1,4 +1,4 @@
-<%= form_with(model: batch, local: true) do |form| %>
+<%= form_with(model: batch, url: batches_path, local: true) do |form| %>
   <% if batch.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(batch.errors.count, "error") %> prohibited this batch from being saved:</h2>
@@ -11,14 +11,58 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
-  </div>
 
-  <div class="field">
-    <%= form.label :tags %>
-    <%= form.input :tag_list %>
+  <% products.map do |p| %>
+    <% unless form.object.batches_products.find_by(product_id: p.id) %>
+      <% form.object.batches_products << BatchesProduct.new(product: p) %>
+    <% end %>
+  <% end %>
+
+  <%= form.fields_for :batches_products do |bp_field| %>
+  <%= link_to 'New Product', new_product_path %>
+
+    <% product = bp_field.object.product %>
+    <%= bp_field.hidden_field :product_id %>
+    <%= bp_field.label product.name %>
+
+    <%= product.category %>
+    <%= number_to_human(product.weight_quantity, units: {unit: "г", thousand: "кг"}) %>
+    <%= number_to_currency(product.price, unit: "₽", separator: ",", delimiter: "", format: "%n %u") %>
+    <%= bp_field.number_field :quantity %>
+
+
+    <div class="product-pic">
+      <% if product.product_pic.present? %>
+        <%= image_tag product.product_pic.url %>
+      <% end %>
+    </div>
+
+    <%#= link_to 'Edit', edit_product_path(product) %>
+    <%#= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+  <br>
+
+  <div class="batch-panel">
+    <div>
+      <%= form.label "Начало акции" %>
+      <%= form.time_field :activation_start %>
+    </div>
+    <div>
+      <%= form.label "Конец акции" %>
+      <%= form.time_field :activation_end %>
+    </div>
+    <div>
+      <%= form.label "Скидка на партию" %>
+      <%= form.select :discount, Batch.discounts.keys %>
+    </div>
+    <p>
+      <% if form.object.batches_products.exists? %>
+        <%= form.object.batches_products.select{|bp| bp.quantity >= 1}.count %> товар(ов)
+      <% else %>
+        0 товар(ов)
+      <% end %>
+    </p>
   </div>
 
   <div class="actions">

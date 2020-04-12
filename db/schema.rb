@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,54 +10,60 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_200_409_213_627) do
+ActiveRecord::Schema.define(version: 2020_04_12_102703) do
+
   # These are extensions that must be enabled in order to support this database
-  enable_extension 'plpgsql'
+  enable_extension "hstore"
+  enable_extension "plpgsql"
 
-  create_table 'batches', force: :cascade do |t|
-    t.string 'company_name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.datetime 'activation_start'
-    t.datetime 'activation_end'
-    t.integer 'discount'
+  create_table "batches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "activation_start"
+    t.datetime "activation_end"
+    t.integer "discount"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_batches_on_user_id"
   end
 
-  create_table 'batches_products', id: false, force: :cascade do |t|
-    t.integer 'batch_id'
-    t.integer 'product_id'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.integer 'quantity'
-    t.index %w[batch_id product_id], name: 'index_batches_products_on_batch_id_and_product_id'
-    t.index %w[product_id batch_id], name: 'index_batches_products_on_product_id_and_batch_id'
+  create_table "batches_products", force: :cascade do |t|
+    t.bigint "batch_id"
+    t.bigint "product_id"
+    t.integer "quantity"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["batch_id"], name: "index_batches_products_on_batch_id"
+    t.index ["product_id"], name: "index_batches_products_on_product_id"
   end
 
-  create_table 'products', force: :cascade do |t|
-    t.string 'name'
-    t.string 'weight_type'
-    t.integer 'quantity'
-    t.integer 'price'
-    t.string 'company_name'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'product_pic'
-    t.integer 'user_id'
-    t.integer 'category'
-    t.integer 'weight_quantity'
+  create_table "products", force: :cascade do |t|
+    t.string "name"
+    t.string "weight_type"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "product_pic"
+    t.integer "user_id"
+    t.integer "category"
+    t.integer "weight_quantity"
   end
 
-  create_table 'users', force: :cascade do |t|
-    t.string 'email', default: '', null: false
-    t.string 'encrypted_password', default: '', null: false
-    t.string 'reset_password_token'
-    t.datetime 'reset_password_sent_at'
-    t.datetime 'remember_created_at'
-    t.datetime 'created_at', null: false
-    t.datetime 'updated_at', null: false
-    t.string 'role'
-    t.string 'company_name'
-    t.index ['email'], name: 'index_users_on_email', unique: true
-    t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
+  create_table "users", force: :cascade do |t|
+    t.string "email", default: "", null: false
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "role"
+    t.string "company_name"
+    t.hstore "address"
+    t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
+
+  add_foreign_key "batches", "users"
+  add_foreign_key "batches_products", "batches"
+  add_foreign_key "batches_products", "products"
 end

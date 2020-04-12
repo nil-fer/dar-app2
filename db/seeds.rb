@@ -11,23 +11,23 @@ users = [
     company_name: 'Администратор',
     role: 'admin'
   }, {
-    email: 'retailer1@retailer.com',
+    email: 'perekrestok@user.com',
     company_name: 'Перекрёсток',
     role: 'retailer'
   }, {
-    email: 'retailer2@retailer.com',
+    email: 'k-brothers2@user.com',
     company_name: 'Братья Караваевы',
     role: 'retailer'
   }, {
-    email: 'retailer3@retailer.com',
+    email: 'hleb@user.com',
     company_name: 'Хлеб Насущный',
     role: 'retailer'
   }, {
-    email: 'retailer4@retailer.com',
+    email: 'vkusvill4@user.com',
     company_name: 'ВкусВилл',
     role: 'retailer'
   }, {
-    email: 'retailer5@retailer.com',
+    email: 'french-bakery@user.com',
     company_name: 'Француская пекарня',
     role: 'retailer'
   }

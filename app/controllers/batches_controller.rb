@@ -1,63 +1,41 @@
 # frozen_string_literal: true
 
 class BatchesController < ApplicationController
-  before_action :set_batch, only: %i[show edit update destroy]
-
-  def index
-    @batches = Batch.all
-  end
-
-  def show
-    @products = @batch.products
-  end
-
-  def new
-    @batch = Batch.new
-  end
-
-  def edit; end
+  before_action :authenticate_user!
 
   def create
-    @batch = Batch.new(batch_params)
+    @batch = current_user.batches.build(batch_params)
+    @products = current_user.products
 
     respond_to do |format|
       if @batch.save
-        format.html { redirect_to @batch, notice: 'Batch was successfully created.' }
+        format.html { redirect_to users_profile_path, notice: 'Updated' }
         format.json { render :show, status: :created, location: @batch }
       else
-        format.html { render :new }
+        format.html { render 'users/profile' }
         format.json { render json: @batch.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def update
+    @batch = Batch.where('user_id = ? and DATE(activation_start) =?', current_user.id, Date.current.to_s).first
+    @products = current_user.products
+
     respond_to do |format|
       if @batch.update(batch_params)
-        format.html { redirect_to @batch, notice: 'Batch was successfully updated.' }
+        format.html { redirect_to users_profile_path, notice: 'Batch was successfully updated.' }
         format.json { render :show, status: :ok, location: @batch }
       else
-        format.html { render :edit }
+        format.html { render 'users/profile' }
         format.json { render json: @batch.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  def destroy
-    @batch.destroy
-    respond_to do |format|
-      format.html { redirect_to batches_url, notice: 'Batch was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
 
-  def set_batch
-    @batch = Batch.find(params[:id])
-  end
-
   def batch_params
-    params.require(:batch).permit(:company_name)
+    params.require(:batch).permit(:discount, :activation_start, :activation_end, batches_products_attributes: [:product_id, :quantity, :id])
   end
 end

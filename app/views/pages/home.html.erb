@@ -1,0 +1,10 @@
+<h3>Акции до <%= (Batch.where('DATE(activation_start) = ?' , Date.current.to_s).order(activation_start: :asc).first.activation_start).strftime("%H:%M") %></h3>
+<% @batches_early.each do |batch| %>
+  <%= render 'retailer', batch: batch  %>
+<% end %>
+
+<h3>Акции с <%= (Batch.where('DATE(activation_start) = ?' , Date.current.to_s).order(activation_start: :asc).first.activation_start).strftime("%H:%M") %> по <%= (Batch.where('DATE(activation_end) = ?' , Date.current.to_s).order(activation_end: :asc).last.activation_end).strftime("%H:%M") %></h3>
+<% @batches_late.each do |batch| %>
+  <%= batch.user.company_name %>
+  <%= batch.batches_products.pluck(:quantity).sum %>
+<% end %>
