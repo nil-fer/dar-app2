@@ -1,14 +1,13 @@
-# frozen_string_literal: true
-
 class CreateProducts < ActiveRecord::Migration[5.2]
   def change
     create_table :products do |t|
       t.string :name
-      t.string :weight_type
-      t.integer :quantity
       t.integer :price
-      t.integer :sale_price
-      t.string :company_name
+      t.string :weight_type
+      t.string :weight_amount
+      t.string :product_pic
+      t.integer :user_id
+      t.integer :category
 
       t.timestamps
     end
