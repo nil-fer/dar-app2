@@ -1,0 +1,33 @@
+doctype html
+html
+  head
+    title
+      | DAR
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+
+    link href="//db.onlinewebfonts.com/c/264e8767769e1b5b33e24efbecade995?family=CoFo+Sans" rel="stylesheet" type="text/css" /
+  body
+    nav.navbar
+      .info
+        = link_to root_path do
+          .logo
+        .location Some location
+
+      .login
+        span
+        = link_to 'Корпоративный кабинет', root_path
+
+    .container
+      = yield
+
+      hr.footer_separator.separator
+      footer
+        p.small-p.grey © 2019-2020 «DAR»
+
+        .footer
+          p.small-p.grey Как забрать товар?
+          p.small-p.grey Компаниям
+          p.small-p.grey Благотворителям(beta)

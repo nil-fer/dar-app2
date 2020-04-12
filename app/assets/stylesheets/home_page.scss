@@ -1,0 +1,41 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'mixins';
+
+.banner {
+  width: 1360px;
+  height: 340px;
+  background-color: $orange;
+  margin: 24px -80px;
+}
+
+.stock {
+  .category_menubar {
+    display: flex;
+  }
+  @include separator;
+
+  .companies,
+  .stock_block {
+    margin-top: 32px;
+
+    .stock_block_title {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    .stock_block_cards {
+      margin-top: 24px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+  .button_all {
+    margin: 16px auto 0;
+  }
+}

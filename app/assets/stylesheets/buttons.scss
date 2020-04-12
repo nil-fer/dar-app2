@@ -1,0 +1,22 @@
+@import 'mixins';
+
+.button_all {
+  display: block;
+  width: 132px;
+  height: 40px;
+  @include border_radius;
+  background-color: $orange;
+  color: $white;
+  text-align: center;
+  line-height: 40px;
+}
+
+.button_all:hover {
+  cursor: pointer;
+}
+
+.button_edit {}
+
+.button_delete {}
+
+.quantity {}

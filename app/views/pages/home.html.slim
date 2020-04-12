@@ -1,0 +1,52 @@
+.banner
+
+.menubar
+  hr.separator
+  .items
+    h4.menu_item Все
+    h4.menu_item Кулинария
+    h4.menu_item Выпечка
+  hr.separator
+
+.stock
+  .stock_block
+    .stock_block_title
+      h2 Акции до 8 вечера
+      a.orange Показать все
+
+    .stock_block_cards
+      = render partial: 'companies/company_card', collection: @companies_stock, as: :product_card
+  hr.separator
+
+  .stock_block
+    .stock_block_title
+      h2 Акции до 8 вечера
+      a.orange Показать все
+    .stock_block_cards
+      = render partial: 'companies/company_card', collection: @companies_stock, as: :product_card
+  hr.separator
+
+  .stock_block
+    .stock_block_title
+      h2 Акции до 8 вечера
+      a.orange Показать все
+    .stock_block_cards
+      = render partial: 'companies/company_card', collection: @companies_stock, as: :product_card
+  hr.separator
+
+  .stock_block
+    .stock_block_title
+      h2 Акции до 8 вечера
+      a.orange Показать все
+    .stock_block_cards
+      = render partial: 'companies/company_card', collection: @companies_stock, as: :product_card
+  hr.separator
+
+  .companies
+    .stock_block_title
+      h2 Все заведения в вашем районе
+
+    .stock_block_cards
+      = render partial: 'companies/company_card', collection: @companies, as: :product_card
+
+  .button_all показать еще

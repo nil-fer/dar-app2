@@ -1,0 +1,33 @@
+$black: #333;
+$orange: #F9901C;
+$grey: #E5E5E5;
+$white: #fff;
+@mixin separator {
+  .separator {
+    position: absolute;
+    width: 100vw;
+    margin: 0;
+    left: 0;
+    display: block;
+    border-top: 1px solid $grey;
+  }
+}
+@mixin border_radius {
+  border-radius: 6px;
+}
+@mixin banner {
+  width: 1360px;
+  height: 340px;
+}
+@mixin fire_icon {
+  span {
+    margin-right: 12px;
+    margin-left: 16px;
+    width: 28px;
+    height: 32px;
+    background-image: url("fire_icon.png");
+    display: block;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
