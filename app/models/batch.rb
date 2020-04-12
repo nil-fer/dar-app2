@@ -7,5 +7,5 @@ class Batch < ApplicationRecord
 
   accepts_nested_attributes_for :batches_products
 
-  enum discount: ['25', '50', '75']
+  enum discount: %w[25 50 75]
 end

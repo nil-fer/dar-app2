@@ -1,14 +1,17 @@
 @import 'mixins';
 
-.button_all {
-  display: block;
-  width: 132px;
+.button {
   height: 40px;
   @include border_radius;
   background-color: $orange;
   color: $white;
   text-align: center;
   line-height: 40px;
+  display: block;
+}
+
+.button_all {
+  width: 132px;
 }
 
 .button_all:hover {
@@ -18,5 +21,9 @@
 .button_edit {}
 
 .button_delete {}
+
+.button_book {
+  width: 366px;
+}
 
 .quantity {}

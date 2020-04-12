@@ -1,4 +1,52 @@
-.product-pic img {
-  width: 100px;
-  height: 50px;
+// .product-pic img {
+//   width: 100px;
+//   height: 50px;
+// }
+@import 'mixins';
+
+.product_card {
+  width: 400px;
+  height: 380px;
+  border: 1px solid $grey;
+  @include border_radius;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  .cover {
+    width: inherit;
+    background-color: $orange;
+    border-radius: 6px 6px 0 0;
+    min-height: 169px;
+    max-height: 200px;
+    flex: 1 0 auto;
+  }
+
+  .product_card_info {
+    flex: 0 1 auto;
+    width: 400px;
+    min-height: 180px;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .details {
+      margin-left: 16px;
+      margin-right: 16px;
+
+      h3,
+      h4 {
+        margin-top: 12px;
+      }
+
+      p {
+        margin-top: 4px;
+      }
+
+      .button_book {
+        margin: 16px auto;
+      }
+    }
+  }
 }
