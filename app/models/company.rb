@@ -4,5 +4,5 @@ class Company < ApplicationRecord
   belongs_to :user
   has_many :outlets
 
-  enum company_category: ['продуктовый магазин', 'пекарня', 'кофейня', 'ресторан', 'булочная']
+  enum company_category: ['Продуктовый магазин', 'Пекарня', 'Кофейня', 'Ресторан', 'Булочная']
 end

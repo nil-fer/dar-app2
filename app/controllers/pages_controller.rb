@@ -7,8 +7,8 @@ class PagesController < ApplicationController
     @batches_late = Batch.where('activation_start >= ?', earliest_start + 1.hour).includes(:user, :batches_products)
     @batches = Batch.all
 
-    @outlets_early = @batches_early.map { |batch| batch.outlet }
-    @outlets_late = @batches_late.map { |batch| batch.outlet }
+    @outlets_early = @batches_early.limit(3).map { |batch| batch.outlet }
+    @outlets_late = @batches_late.limit(9).map { |batch| batch.outlet }
     @outlets = Outlet.all
   end
 end

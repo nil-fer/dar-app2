@@ -8,4 +8,4 @@
     .add
     h3 Добавить продукт
 
-  = render partial: 'batch_product_card', collection: Company.all, as: :product_card
+  = render partial: 'batch_product_card', collection: @products, as: :product

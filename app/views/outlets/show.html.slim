@@ -1,28 +1,30 @@
 .outlet_container
   .outlet_banner
   .outlet_info
-    h1  #{@outlet.company + ' ' + @outlet.address}
+    h1  #{@outlet.company.company_name + ', ' + @outlet.display_title_address}
     h4
       span
-      | акция до #{@batch.activation_end}
+      | акция до #{@batch.activation_end.strftime("%H:%M")}
 
-  p.location #{@outlet.address} ул. Петрозаводская д.3, корп. 4
+  p.location #{@outlet.display_full_address}
 
 .menubar
   hr.separator
   .items
     h4.menu_item Все
     - Product.categories.each do |key, value|
-      h4.menu_item #{key}
+      h4.menu_item
+        = key
 
   hr.separator
 
-.batch
-  .batch_block
-    .batch_block_title
-      h2 Все
+- @outlet.batch.present?
+  .batch
+    .batch_block
+      .batch_block_title
+        h2 Все
 
-    .batch_block_cards
-      = render partial: 'products/product_card', collection: @products, as: :product
+      .batch_block_cards
+        = render partial: 'products/product_card', collection: @products, as: :product
 
 .banner
