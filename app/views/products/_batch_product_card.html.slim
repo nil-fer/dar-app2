@@ -2,29 +2,13 @@
   .cover
   .batch_product_card_info
     .details
-      h4 Крем-суп из брокколи
-      h3 180 &#8381;
+      h4 #{product.name}
+      h3 #{product.price} &#8381;
       .quantity
-        p.dark_grey Цена за 500г
+        p.dark_grey Цена за #{product.weight_amount} #{product.weight_type}
         .button_quantity.button
           span +
-          span 10шт
-          span -
-      .buttons
-        .button_edit.button Редактировать
-        .button_delete.button Удалить
-
-.batch_product_card
-  .cover
-  .batch_product_card_info
-    .details
-      h4 Крем-суп из брокколи очень-очень вкусный о да очень-очень вкусный о ммм оу
-      h3 180 &#8381;
-      .quantity
-        p.dark_grey Цена за 500г
-        .button_quantity.button
-          span +
-          span 10шт
+          span шт
           span -
       .buttons
         .button_edit.button Редактировать

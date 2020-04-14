@@ -5,4 +5,4 @@
     .details
       p #{outlet.company.company_category}
       span •
-      p.orange #{outlet.batch.products.count} предложений
+      p.orange #{BatchesProduct.where(batch_id: outlet.batch).count} предложений

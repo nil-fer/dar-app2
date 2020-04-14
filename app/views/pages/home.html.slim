@@ -4,8 +4,8 @@
   hr.separator
   .items
     h4.menu_item Все
-    h4.menu_item Кулинария
-    h4.menu_item Выпечка
+    - Company.company_categories.each do |key, value|
+      h4.menu_item #{key}
   hr.separator
 
 .batch
