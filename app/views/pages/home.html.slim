@@ -11,35 +11,19 @@
 .batch
   .batch_block
     .batch_block_title
-      h2 Акции до 8 вечера
+      h2 Активные акции
       a.orange Показать все
 
     .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @companies_batch, as: :product_card
+      = render partial: 'outlets/outlet_card', collection: @outlets_early, as: :outlet
   hr.separator
 
   .batch_block
     .batch_block_title
-      h2 Акции до 8 вечера
+      h2 Будущие акции
       a.orange Показать все
     .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @companies_batch, as: :product_card
-  hr.separator
-
-  .batch_block
-    .batch_block_title
-      h2 Акции до 8 вечера
-      a.orange Показать все
-    .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @companies_batch, as: :product_card
-  hr.separator
-
-  .batch_block
-    .batch_block_title
-      h2 Акции до 8 вечера
-      a.orange Показать все
-    .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @companies_batch, as: :product_card
+      = render partial: 'outlets/outlet_card', collection: @outlets_late, as: :outlet
   hr.separator
 
   .companies
@@ -47,6 +31,6 @@
       h2 Все заведения в вашем районе
 
     .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @companies, as: :product_card
+      = render partial: 'outlets/outlet_card', collection: @outlets, as: :outlet
 
   .button_all.button показать еще
