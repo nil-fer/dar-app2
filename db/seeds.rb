@@ -69,7 +69,7 @@ companies = [
     company_name: 'Перекрёсток',
     user_id: 1
   }, {
-    company_name: "Кулинарная Лавка Братьев Караваевых",
+    company_name: "Братья Караваевы",
     user_id: 2
   }, {
     company_name: "Макдоналдс",
@@ -124,13 +124,11 @@ end
 
 outlets.each do |outlet|
   o = create_outlets(outlet)
-  puts "Outlet with #{o.company_id} created"
+  puts "Outlet created"
 end
 
-product_names = %w[Бананы Молоко Рыба Хотдог Бутерброд Макароны]
-
 def random_weight_type
-  rand(0..1)
+  rand(1..2)
 end
 
 def random_category
@@ -157,10 +155,12 @@ def upload_fake_product_pic
   uploader
 end
 
+product_names = %w[Бананы Молоко Рыба Хотдог Бутерброд Макароны]
+
 Product.create!([
   {
     name: product_names.sample,
-    weight_type: random_weight_type,
+    weight_type: 1,
     weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
@@ -168,7 +168,7 @@ Product.create!([
     user_id: random_managers
   }, {
     name: product_names.sample,
-    weight_type: random_weight_type,
+    weight_type: 1,
     weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
@@ -176,7 +176,7 @@ Product.create!([
     user_id: random_managers
   }, {
     name: product_names.sample,
-    weight_type: random_weight_type,
+    weight_type: 1,
     weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
@@ -184,7 +184,7 @@ Product.create!([
     user_id: random_managers
   }, {
     name: product_names.sample,
-    weight_type: random_weight_type,
+    weight_type: 1,
     weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
@@ -192,7 +192,7 @@ Product.create!([
     user_id: random_managers
   }, {
     name: product_names.sample,
-    weight_type: random_weight_type,
+    weight_type: 1,
     weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
@@ -200,7 +200,7 @@ Product.create!([
     user_id: random_managers
   }, {
     name: product_names.sample,
-    weight_type: random_weight_type,
+    weight_type: 1,
     weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
@@ -209,23 +209,57 @@ Product.create!([
   }
 ])
 
-def time_now
-  time_now = DateTime.current
-  DateTime.new(time_now.year, time_now.month, time_now.day, 18, 0, 0)
-end
-
 Batch.create!([
   {
-    activation_start: time_now,
-    activation_end: Faker::Time.between(from: Time.now - 1, to: DateTime.now, format: :short),
+    activation_start: Faker::Time.between(from: Time.now - 1, to: Time.now, format: :short),
+    activation_end: Faker::Time.between(from: Time.now - 6, to: Time.now, format: :short),
+    discount: random_discount,
+    user_id: 1,
+    outlet_id: 1
+  },{
+    activation_start: Faker::Time.between(from: Time.now - 1, to: Time.now, format: :short),
+    activation_end: Faker::Time.between(from: Time.now - 6, to: Time.now, format: :short),
     discount: random_discount,
     user_id: 2,
     outlet_id: 1
   },{
-    activation_start: time_now,
-    activation_end: Faker::Time.between(from: Time.now - 1, to: DateTime.now, format: :short),
+    activation_start: Faker::Time.between(from: Time.now - 1, to: Time.now, format: :short),
+    activation_end: Faker::Time.between(from: Time.now - 6, to: Time.now, format: :short),
     discount: random_discount,
     user_id: 3,
     outlet_id: 2
+  },{
+    activation_start: Faker::Time.between(from: Time.now - 1, to: Time.now, format: :short),
+    activation_end: Faker::Time.between(from: Time.now - 6, to: Time.now, format: :short),
+    discount: random_discount,
+    user_id: 4,
+    outlet_id: 3
+  },{
+    activation_start: Faker::Time.between(from: Time.now - 1, to: Time.now, format: :short),
+    activation_end: Faker::Time.between(from: Time.now - 6, to: Time.now, format: :short),
+    discount: random_discount,
+    user_id: 5,
+    outlet_id: 4
+  }
+])
+
+def random_batch_id
+  rand(1..4)
+end
+
+def random_product_id
+  rand(1..9)
+end
+
+def random_quantity
+  rand(1..10)
+end
+
+
+BatchesProduct.create!([
+  {
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
   }
 ])

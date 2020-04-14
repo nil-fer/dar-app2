@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_14_190912) do
+ActiveRecord::Schema.define(version: 2020_04_14_230811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 2020_04_14_190912) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "price"
-    t.string "weight_type"
+    t.integer "weight_type"
     t.string "weight_amount"
     t.string "product_pic"
     t.integer "user_id"
