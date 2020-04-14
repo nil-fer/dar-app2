@@ -1,4 +1,225 @@
-.product-pic img {
-  width: 100px;
-  height: 50px;
+// .product-pic img {
+//   width: 100px;
+//   height: 50px;
+// }
+@import 'mixins';
+
+.title {
+  margin-bottom: 16px;
+  width: 100vw;
+
+  .background {
+    background-color: $white;
+    left: 0;
+    height: 104px;
+    width: 100vw;
+    position: absolute;
+    z-index: 0;
+  }
+
+  h1 {
+    margin: 16px 0;
+    position: relative;
+  }
+}
+
+.product_form {
+  margin: 64px auto;
+  width: 600px;
+  justify-content: center;
+  height: 732px;
+  background-color: $white;
+
+  .new_product {
+    @include dashed_border;
+    background-color: #F6F6F6;
+    width: 552px;
+    height: 312px;
+    margin: 48px auto 0;
+
+    .bred_form {
+      margin: 128px auto;
+    }
+  }
+
+  h2 {
+    margin-top: 48px;
+    margin-left: 24px;
+    margin-right: 24px;
+    color: $dark_grey;
+  }
+
+  hr.separator {
+    width: 584px;
+    position: relative;
+    margin-top: 32px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .mesure {
+    margin-top: 24px;
+    margin-left: 24px;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .mesure_input {
+    .input {
+      margin-top: 4px;
+      margin-right: 24px;
+    }
+  }
+
+  .measure_inputs {
+    margin-top: 32px;
+    margin-left: 24px;
+    display: flex;
+  }
+
+  .buttons {
+    margin-left: 24px;
+    margin-right: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 32px;
+  }
+}
+
+.products_container {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .new_product {
+    width: 372px;
+    height: 378px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    @include dashed_border;
+
+    h3 {
+      margin-top: 24px;
+      color: $dark_grey;
+    }
+  }
+
+  .batch_product_card {
+    width: 400px;
+    height: 380px;
+    border: 1px solid $grey;
+    @include border_radius;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 32px;
+
+    .cover {
+      flex: 1 0 auto;
+      width: inherit;
+      background-color: $orange;
+      border-radius: 6px 6px 0 0;
+      min-height: 130px;
+      max-height: 200px;
+    }
+
+    .batch_product_card_info {
+      flex: 0 1 auto;
+      width: 400px;
+      min-height: 180px;
+      background-color: $white;
+      display: flex;
+      flex-direction: row;
+
+      .details {
+        width: 368px;
+        margin-left: 16px;
+        margin-right: 16px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+
+        h3,
+        h4 {
+          margin-top: 12px;
+          width: 368px;
+        }
+
+        p {
+          margin-top: 4px;
+          width: 176px;
+        }
+
+        .buttons,
+        .quantity {
+          width: 368px;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        .quantity {
+          align-items: center;
+        }
+
+        .buttons {
+          .button {
+            margin: 16px 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+.product_card {
+  width: 400px;
+  height: 380px;
+  border: 1px solid $grey;
+  @include border_radius;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 32px;
+
+  .cover {
+    width: inherit;
+    background-color: $orange;
+    border-radius: 6px 6px 0 0;
+    min-height: 169px;
+    max-height: 200px;
+    flex: 1 0 auto;
+  }
+
+  .product_card_info {
+    flex: 0 1 auto;
+    width: 400px;
+    min-height: 180px;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    .details {
+      margin-left: 16px;
+      margin-right: 16px;
+
+      h3,
+      h4 {
+        margin-top: 12px;
+      }
+
+      p {
+        margin-top: 4px;
+      }
+
+      .button_book {
+        margin: 16px auto;
+      }
+    }
+  }
 }

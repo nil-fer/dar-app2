@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UsersController < ApplicationController
   # load_and_authorize_resource
 
@@ -14,8 +16,7 @@ class UsersController < ApplicationController
     @batch ||= current_user.batches.build
   end
 
-
   def user_params
-    params.require(:user).permit(:company_name, :email, address: [:city, :street, :apartment, :block])
+    params.require(:user).permit(:company_name, :email, address: %i[city street apartment block])
   end
 end

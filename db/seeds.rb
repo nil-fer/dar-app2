@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 
-Rake::Task['db:drop'].invoke
-Rake::Task['db:create'].invoke
-Rake::Task['db:migrate'].invoke
-
 # create users
 users = [
   {

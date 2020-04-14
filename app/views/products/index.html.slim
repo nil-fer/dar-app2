@@ -1,0 +1,11 @@
+.title
+  .background
+  h1  Новая акция
+  hr.separator
+
+.products_container
+  .new_product
+    .add
+    h3 Добавить продукт
+
+  = render partial: 'batch_product_card', collection: Company.all, as: :product_card

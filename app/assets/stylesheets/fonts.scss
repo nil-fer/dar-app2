@@ -1,0 +1,67 @@
+@import url(//db.onlinewebfonts.com/c/264e8767769e1b5b33e24efbecade995?family=CoFo+Sans);
+@import url(//db.onlinewebfonts.com/c/952bab25f6798d6bb1937d67e9bee4dd?family=Sans);
+@import 'mixins';
+@font-face {
+  font-family: "CoFo Sans";
+  src: url("//db.onlinewebfonts.com/t/264e8767769e1b5b33e24efbecade995.eot");
+  src: url("//db.onlinewebfonts.com/t/264e8767769e1b5b33e24efbecade995.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/264e8767769e1b5b33e24efbecade995.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/264e8767769e1b5b33e24efbecade995.woff") format("woff"), url("//db.onlinewebfonts.com/t/264e8767769e1b5b33e24efbecade995.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/264e8767769e1b5b33e24efbecade995.svg#CoFo Sans") format("svg");
+}
+
+a,
+div,
+h1,
+h2,
+h3,
+h4,
+p {
+  color: $black;
+  font-family: "CoFo Sans";
+}
+
+h1 {
+  font-size: 48px;
+  line-height: 72px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+h3 {
+  font-size: 24px;
+  line-height: 31px;
+}
+
+h4 {
+  font-size: 18px;
+  line-height: 27px;
+  font-style: bold;
+}
+
+p {
+  font-size: 16px;
+  line-height: 16px;
+}
+
+p.location {
+  font-size: 18px;
+  line-height: 18px;
+}
+
+.orange {
+  color: $orange;
+}
+
+.grey {
+  color: $grey;
+}
+
+.dark_grey {
+  color: $dark_grey;
+}
+
+.add {
+  background-image: url("add.png");
+  width: 64px;
+  height: 64px;
+}

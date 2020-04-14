@@ -36,6 +36,6 @@ class BatchesController < ApplicationController
   private
 
   def batch_params
-    params.require(:batch).permit(:discount, :activation_start, :activation_end, batches_products_attributes: [:product_id, :quantity, :id])
+    params.require(:batch).permit(:discount, :activation_start, :activation_end, batches_products_attributes: %i[product_id quantity id])
   end
 end
