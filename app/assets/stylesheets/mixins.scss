@@ -32,3 +32,6 @@ $white: #fff;
     background-size: contain;
   }
 }
+@mixin dashed_border {
+  border: 2px dashed $dark_grey;
+}

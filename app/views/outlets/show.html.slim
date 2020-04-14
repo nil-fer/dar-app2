@@ -22,6 +22,6 @@
       h2 Акции до 8 вечера
 
     .batch_block_cards
-      = render partial: 'products/product_card', collection: @products, as: :product_card
+      = render partial: 'products/product_card', collection: Company.all, as: :product_card
 
 .banner

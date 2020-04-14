@@ -8,6 +8,7 @@
   text-align: center;
   line-height: 40px;
   display: block;
+  cursor: pointer;
 }
 
 .button_all {
@@ -18,12 +19,55 @@
   cursor: pointer;
 }
 
-.button_edit {}
+.button_delete,
+.button_edit {
+  width: 176px;
+  background-color: transparent;
+}
 
-.button_delete {}
+.button_edit {
+  border: 1px solid $orange;
+  color: $orange;
+}
+
+.button_delete {
+  border: 1px solid $dark_grey;
+  color: $dark_grey;
+}
 
 .button_book {
   width: 366px;
 }
 
-.quantity {}
+.button_category,
+.button_quantity {
+  background-color: transparent;
+  border: 1px solid $grey;
+  color: $dark_grey;
+  box-sizing: border-box;
+  padding-left: 12px;
+  padding-right: 12px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.button_quantity {
+  width: 144px;
+}
+
+.button_category {
+  width: 336px;
+}
+
+.input {
+  box-sizing: border-box;
+  padding-left: 16px;
+  padding-right: 16px;
+  width: 92px;
+  height: 48px;
+  @include border_radius;
+}
+
+.middle {
+  width: 264px;
+}

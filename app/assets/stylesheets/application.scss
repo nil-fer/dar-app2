@@ -42,6 +42,8 @@ a:hover {
   flex-direction: column;
   margin: auto;
   @include separator;
+  min-height: 750px;
+  justify-content: space-between;
 }
 
 hr.footer_separator {
