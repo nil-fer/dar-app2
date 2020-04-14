@@ -4,8 +4,8 @@ class OutletsController < ApplicationController
   before_action :set_outlet, only: %i[show edit update destroy]
 
   def show
-    @outlet = Outlet.all
-    @products = Product.all
+    @batch = @outlet.batch
+    @products = BatchesProduct.where(batch_id: @batch).products
   end
 
   def new

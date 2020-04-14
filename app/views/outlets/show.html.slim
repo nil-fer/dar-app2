@@ -1,27 +1,28 @@
 .outlet_container
   .outlet_banner
   .outlet_info
-    h1  Перекресток на Юго-Западной
+    h1  #{@outlet.company + ' ' + @outlet.address}
     h4
       span
-      | акция до 19:00
+      | акция до #{@batch.activation_end}
 
-  p.location ул. Петрозаводская д.3, корп. 4
+  p.location #{@outlet.address} ул. Петрозаводская д.3, корп. 4
 
 .menubar
   hr.separator
   .items
     h4.menu_item Все
-    h4.menu_item Кулинария
-    h4.menu_item Выпечка
+    - Product.categories.each do |key, value|
+      h4.menu_item #{key}
+
   hr.separator
 
 .batch
   .batch_block
     .batch_block_title
-      h2 Акции до 8 вечера
+      h2 Все
 
     .batch_block_cards
-      = render partial: 'products/product_card', collection: Company.all, as: :product_card
+      = render partial: 'products/product_card', collection: @products, as: :product
 
 .banner
