@@ -4,28 +4,39 @@
 users = [
   {
     email: 'admin@admin.com',
-    company_name: 'Администратор',
     role: 'admin'
   }, {
-    email: 'perekrestok@user.com',
-    company_name: 'Перекрёсток',
+    email: 'retailer@perekrestok.com',
     role: 'retailer'
   }, {
-    email: 'k-brothers@user.com',
-    company_name: 'Братья Караваевы',
+    email: 'retailer@karavaev-brothers.com',
     role: 'retailer'
   }, {
-    email: 'hleb@user.com',
-    company_name: 'Хлеб Насущный',
+    email: 'retailer@mcdonalds.com',
     role: 'retailer'
   }, {
-    email: 'vkusvill@user.com',
-    company_name: 'ВкусВилл',
+    email: 'retailer@vkusvill.com',
     role: 'retailer'
   }, {
-    email: 'french-bakery@user.com',
-    company_name: 'Француская пекарня',
+    email: 'retailer@french-bakery.com',
     role: 'retailer'
+  },
+    #managers
+  {
+    email: 'manager@perekrestok.com',
+    role: 'manager'
+  }, {
+    email: 'manager@karavaev-brothers.com',
+    role: 'manager'
+  }, {
+    email: 'manager@mcdonalds.com',
+    role: 'manager'
+  }, {
+    email: 'manager@vkusvill.com',
+    role: 'manager'
+  }, {
+    email: 'manager@french-bakery.com',
+    role: 'manager'
   }
 ]
 
@@ -46,9 +57,49 @@ users.each do |user|
   puts "User with #{u.email} created"
 end
 
-def random_users
-  rand(2..5)
+def random_managers
+  rand(6..10)
 end
+
+companies = [
+  {
+    company_name: 'Перекрёсток',
+    user_id: 1
+  }, {
+    company_name: "Кулинарная Лавка Братьев Караваевых",
+    user_id: 2
+  }, {
+    company_name: "Макдоналдс",
+    user_id: 3
+  }, {
+    company_name: "Вкусвилл",
+    user_id: 4
+  }, {
+    company_name: "Французская пекарня",
+    user_id: 5
+  }
+]
+
+outlets = [
+  {
+    company_id: 0,
+    address: { city: 'Москва', street: "ул. Новый Арбат", apartment: "15", block: "с1" },
+  }, {
+    company_id: 0,
+    address: { city: 'Москва', street: "ул. Спиридоновка", apartment: "25", block: "20с1" },
+  }, {
+    company_id: 0,
+    address: { city: 'Москва', street: "ул. Никольская", apartment: "10", block: "" },
+  }, {
+    company_id: 0,
+    address: { city: 'Москва', street: "пер. Сивцев Вражек", apartment: "20", block: "" },
+  }, {
+    company_id: 0,
+    address: { city: 'Москва', street: "ул. Мясницкая", apartment: "17", block: "с1" },
+  }
+]
+
+
 
 product_names = %w[Бананы Молоко Рыба Хотдог Бутерброд Макароны]
 
@@ -88,7 +139,7 @@ Product.create!([
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
-    user_id: random_users
+    user_id: random_managers
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
@@ -96,7 +147,7 @@ Product.create!([
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
-    user_id: random_users
+    user_id: random_managers
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
@@ -104,7 +155,7 @@ Product.create!([
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
-    user_id: random_users
+    user_id: random_managers
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
@@ -112,7 +163,7 @@ Product.create!([
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
-    user_id: random_users
+    user_id: random_managers
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
@@ -120,7 +171,7 @@ Product.create!([
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
-    user_id: random_users
+    user_id: random_managers
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
@@ -128,7 +179,7 @@ Product.create!([
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
-    user_id: random_users
+    user_id: random_managers
   }
 ])
 
