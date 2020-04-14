@@ -15,7 +15,7 @@ users = [
     company_name: 'Перекрёсток',
     role: 'retailer'
   }, {
-    email: 'k-brothers2@user.com',
+    email: 'k-brothers@user.com',
     company_name: 'Братья Караваевы',
     role: 'retailer'
   }, {
@@ -23,7 +23,7 @@ users = [
     company_name: 'Хлеб Насущный',
     role: 'retailer'
   }, {
-    email: 'vkusvill4@user.com',
+    email: 'vkusvill@user.com',
     company_name: 'ВкусВилл',
     role: 'retailer'
   }, {
@@ -64,7 +64,11 @@ def random_category
   rand(0..5)
 end
 
-def random_weight_quantity
+def random_discount
+  rand(0..2)
+end
+
+def random_weight_amount
   rand(100..4000)
 end
 
@@ -84,7 +88,7 @@ Product.create!([
   {
     name: product_names.sample,
     weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
+    weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
@@ -92,7 +96,7 @@ Product.create!([
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
+    weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
@@ -100,7 +104,7 @@ Product.create!([
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
+    weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
@@ -108,7 +112,7 @@ Product.create!([
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
+    weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
@@ -116,7 +120,7 @@ Product.create!([
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
+    weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
@@ -124,10 +128,29 @@ Product.create!([
   }, {
     name: product_names.sample,
     weight_type: random_weight_type,
-    weight_quantity: random_weight_quantity,
+    weight_amount: random_weight_amount,
     price: random_price,
     category: random_category,
     product_pic: upload_fake_product_pic,
     user_id: random_users
+  }
+])
+
+def time_now
+  time_now = DateTime.current
+  DateTime.new(time_now.year, time_now.month, time_now.day, 18, 0, 0)
+end
+
+Batch.create!([
+  {
+    activation_start: time_now,
+    activation_end: Faker::Time.between(from: Time.now - 1, to: DateTime.now, format: :short),
+    discount: random_discount,
+    user_id: 2
+  },{
+    activation_start: time_now,
+    activation_end: Faker::Time.between(from: Time.now - 1, to: DateTime.now, format: :short),
+    discount: random_discount,
+    user_id: 3
   }
 ])

@@ -26,7 +26,7 @@
     <%= bp_field.label product.name %>
 
     <%= product.category %>
-    <%= number_to_human(product.weight_quantity, units: {unit: "г", thousand: "кг"}) %>
+    <%= number_to_human(product.weight_amount, units: {unit: "г", thousand: "кг"}) %>
     <%= number_to_currency(product.price, unit: "₽", separator: ",", delimiter: "", format: "%n %u") %>
     <%= bp_field.number_field :quantity %>
 
@@ -58,9 +58,7 @@
     </div>
     <p>
       <% if form.object.batches_products.exists? %>
-        <%= form.object.batches_products.select{|bp| bp.quantity >= 1}.count %> товар(ов)
-      <% else %>
-        0 товар(ов)
+        Позиций: <%= form.object.batches_products.select{|bp| bp.quantity >= 1}.count %>
       <% end %>
     </p>
   </div>
