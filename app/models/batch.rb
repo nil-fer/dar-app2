@@ -4,6 +4,7 @@ class Batch < ApplicationRecord
   has_many :batches_products, dependent: :destroy
   has_many :products, through: :batches_products
   belongs_to :user
+  belongs_to :outlet
 
   accepts_nested_attributes_for :batches_products
 

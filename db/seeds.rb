@@ -45,7 +45,6 @@ def create_users(user)
 
   User.create(
     email: user[:email],
-    company_name: user[:company_name],
     role: user[:role],
     password: password,
     password_confirmation: password
@@ -55,6 +54,10 @@ end
 users.each do |user|
   u = create_users(user)
   puts "User with #{u.email} created"
+end
+
+def random_managers
+  rand(6..10)
 end
 
 def random_managers
@@ -80,26 +83,49 @@ companies = [
   }
 ]
 
+def create_companies(company)
+  Company.create(
+    company_name: company[:company_name],
+    user_id: company[:user_id]
+  )
+end
+
+companies.each do |company|
+  c = create_companies(company)
+  puts "Company with #{c.company_name} created"
+end
+
+
 outlets = [
   {
     company_id: 0,
     address: { city: 'Москва', street: "ул. Новый Арбат", apartment: "15", block: "с1" },
   }, {
-    company_id: 0,
+    company_id: 1,
     address: { city: 'Москва', street: "ул. Спиридоновка", apartment: "25", block: "20с1" },
   }, {
-    company_id: 0,
+    company_id: 2,
     address: { city: 'Москва', street: "ул. Никольская", apartment: "10", block: "" },
   }, {
-    company_id: 0,
+    company_id: 3,
     address: { city: 'Москва', street: "пер. Сивцев Вражек", apartment: "20", block: "" },
   }, {
-    company_id: 0,
+    company_id: 4,
     address: { city: 'Москва', street: "ул. Мясницкая", apartment: "17", block: "с1" },
   }
 ]
 
+def create_outlets(outlet)
+  Outlet.create(
+    company_id: outlet[:company_id],
+    address: outlet[:address]
+  )
+end
 
+outlets.each do |outlet|
+  o = create_outlets(outlet)
+  puts "Outlet with #{o.company_id} created"
+end
 
 product_names = %w[Бананы Молоко Рыба Хотдог Бутерброд Макароны]
 
@@ -193,11 +219,13 @@ Batch.create!([
     activation_start: time_now,
     activation_end: Faker::Time.between(from: Time.now - 1, to: DateTime.now, format: :short),
     discount: random_discount,
-    user_id: 2
+    user_id: 2,
+    outlet_id: 1
   },{
     activation_start: time_now,
     activation_end: Faker::Time.between(from: Time.now - 1, to: DateTime.now, format: :short),
     discount: random_discount,
-    user_id: 3
+    user_id: 3,
+    outlet_id: 2
   }
 ])

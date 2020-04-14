@@ -15,7 +15,7 @@
         <td><%= product.category %></td>
         <td><%= number_to_currency(product.price, unit: "₽", separator: ",", delimiter: "", format: "%n %u") %></td>
         <td><%= number_to_human(product.weight_amount, units: {unit: "г", thousand: "кг"}) %></td>
-        <td><%= product.user.company_name %></td>
+        <td><%#= product.user.company_id %></td>
 
         <td><%= link_to 'Edit', edit_product_path(product) %></td>
         <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
