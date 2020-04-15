@@ -244,7 +244,7 @@ Batch.create!([
 ])
 
 def random_batch_id
-  rand(1..4)
+  rand(1..5)
 end
 
 def random_product_id
@@ -258,6 +258,46 @@ end
 
 BatchesProduct.create!([
   {
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
+    batch_id: random_batch_id,
+    product_id: random_product_id,
+    quantity: random_quantity
+  },{
     batch_id: random_batch_id,
     product_id: random_product_id,
     quantity: random_quantity
