@@ -4,8 +4,9 @@
   hr.separator
 
 .products_container
-  .new_product
-    .add
-    h3 Добавить продукт
+  = link_to new_outlet_product_path do
+    .new_product
+      .add
+      h3 Добавить продукт
 
   = render partial: 'batch_product_card', collection: @products, as: :product

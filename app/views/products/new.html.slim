@@ -3,29 +3,4 @@
   h1  Новый продукт
   hr.separator
 
-= form_with(model: @product, local: true, html: {class: "product_form"}) do |form|
-  .new_product
-    .bred_form
-
-  h2 Введите название товара
-
-  hr.separator
-
-  .mesure
-    .button_category.button Выберит категорию
-
-    input type="radio" checked="checked" name="radio" в порциях
-    input type="radio" checked="checked" name="radio" на вес
-
-  .measure_inputs
-    .mesure_input
-      p Вес порций
-      input.input value='25г'
-
-    .mesure_input
-      p Цена без скидки
-      input.input value='2500'
-
-  .buttons
-    .button_edit.button.middle Отмена
-    .button_book.button.middle Создать
+= render 'form', product: @product

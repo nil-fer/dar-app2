@@ -42,6 +42,12 @@
     }
   }
 
+  input {
+    display: block;
+    border: none;
+    width: auto;
+  }
+
   h2 {
     margin-top: 48px;
     margin-left: 24px;
@@ -52,7 +58,7 @@
   hr.separator {
     width: 584px;
     position: relative;
-    margin-top: 32px;
+    margin-top: 16px;
     margin-left: auto;
     margin-right: auto;
   }

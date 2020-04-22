@@ -1,29 +1,28 @@
-.title
-  .background
-  h1  Новый продукт
-  hr.separator
-
-= form_with(model: product, local: true, html: {class: "form_product"}) do |form| .product_form
+= form_with(model: @product, url: outlet_products_path, html: {class: "product_form"}) do |form|
   .new_product
     .bred_form
 
-  h2 Введите название товара
+  h2 #{form.text_field :name, placeholder: 'Введите название товара', size: 30}
 
   hr.separator
 
   .mesure
-    .button_category.button Выберит категорию
+    = select_tag :category, options_for_select(categories_collection),
+      class: 'button_category button', placeholder: 'Выберит категорию'
 
-    input type="radio" checked="checked" name="radio" в порциях
-    input type="radio" checked="checked" name="radio" на вес
+    = form.label :weight_type, "в порциях", value: 1
+    = form.radio_button :weight_type, 1
+
+    = form.label :weight_type, "на вес", value: 0
+    = form.radio_button :weight_type, 0, checked: true
 
   .measure_inputs
     .mesure_input
-      p Вес порций
+      p #{form.label :weight_amount, 'Вес порций'}
       input.input value='25г'
 
     .mesure_input
-      p Цена без скидки
+      p #{form.label :autolyse} Цена без скидки
       input.input value='2500'
 
   .buttons
