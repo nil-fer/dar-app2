@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :get_outlet
+  # TO DO указать экшны в которых должен вызываться :get_outlet
+  before_action :get_outlet, except: :destroy
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
