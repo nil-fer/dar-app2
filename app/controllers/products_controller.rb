@@ -2,7 +2,7 @@
 
 class ProductsController < ApplicationController
   # TO DO указать экшны в которых должен вызываться :get_outlet
-  before_action :get_outlet, except: :destroy
+  before_action :get_outlet
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
@@ -19,14 +19,14 @@ class ProductsController < ApplicationController
 
   def create
     @product = @outlet.products.build(product_params)
-    @product.user_id = current_user.id
+    # @product.user_id = current_user.id
 
     respond_to do |format|
       if @product.save
         format.html { redirect_to outlet_products_path(@outlet), notice: 'Продукт добавлен.' }
-        format.json { render :show, status: :created, location: @product }
+        # format.json { render :index, status: :created, location: @product }
       else
-        format.html { render :new }
+        format.html { render :new, notice: 'Ошибка' }
         format.json { render json: @product.errors, status: :unprocessable_entity }
       end
     end
@@ -35,8 +35,8 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to outlet_product_path(@outlet), notice: 'Product was successfully updated.' }
-        format.json { render :show, status: :ok, location: @product }
+        format.html { redirect_to outlet_products_path(@outlet), notice: 'Product was successfully updated.' }
+        # format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
         format.json { render json: @product.errors, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
   def destroy
     @product.destroy
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to outlet_products_path(@outlet), notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -65,11 +65,12 @@ class ProductsController < ApplicationController
   def product_params
     params.require(:product).permit(
       :name,
-      :weight_type,
       :price,
-      :company_name,
+      :weight_type,
+      :weight_amount,
       :product_pic,
-      :weight_amoun,
+      :category,
+      :company_name,
       :outlet_id
     )
   end

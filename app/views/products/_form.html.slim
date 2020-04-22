@@ -1,8 +1,9 @@
 = form_with(model: @product, url: outlet_products_path, html: {class: "product_form"}) do |form|
   .new_product
+    = form.file_field :product_pic, class: 'file_field'
     .bred_form
 
-  h2 #{form.text_field :name, placeholder: 'Введите название товара', size: 30}
+  h2 #{form.text_field :name, placeholder: 'Введите название товара', size: 30, class: 'title_input'}
 
   hr.separator
 
@@ -10,21 +11,21 @@
     = select_tag :category, options_for_select(categories_collection),
       class: 'button_category button', placeholder: 'Выберит категорию'
 
-    = form.label :weight_type, "в порциях", value: 1
-    = form.radio_button :weight_type, 1
+    = form.radio_button :weight_type, 'в порциях'
+    = form.label :weight_type, "в порциях", value: 'в порциях'
 
-    = form.label :weight_type, "на вес", value: 0
-    = form.radio_button :weight_type, 0, checked: true
+    = form.radio_button :weight_type, 'на вес', checked: true
+    = form.label :weight_type, "на вес", value: 'на вес'
 
   .measure_inputs
     .mesure_input
       p #{form.label :weight_amount, 'Вес порций'}
-      input.input value='25г'
+      = form.text_field :weight_amount, value: 0, class: 'input'
 
     .mesure_input
-      p #{form.label :autolyse} Цена без скидки
-      input.input value='2500'
+      p #{ form.label :price, 'Цена без скидки' }
+      = form.text_field :price, value: 0, class: 'input'
 
   .buttons
-    .button_edit.button.middle Отмена
-    .button_book.button.middle Создать
+    = link_to 'Отмена', outlet_products_path(@outlet), class: 'button_edit button middle'
+    = form.submit 'Сохранить', class: 'button_book button middle'
