@@ -9,28 +9,31 @@
   hr.separator
 
 .batch
-  .batch_block
-    .batch_block_title
-      h2 Активные акции
-      a.orange Показать все
+  - if @outlets_early.all? {|outlets_early| outlets_early.present?}
+    .batch_block
+      .batch_block_title
+        h2 Активные акции
+        a.orange Показать все
 
-    .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @outlets_early, as: :outlet
-  hr.separator
+      .batch_block_cards
+        = render partial: 'outlets/outlet_card', collection: @outlets_early, as: :outlet
+    hr.separator
 
-  .batch_block
-    .batch_block_title
-      h2 Будущие акции
-      a.orange Показать все
-    .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @outlets_late, as: :outlet
-  hr.separator
+  - if @outlets_late.all? {|outlets_late| outlets_late.present?}
+    .batch_block
+      .batch_block_title
+        h2 Будущие акции
+        a.orange Показать все
+      .batch_block_cards
+        = render partial: 'outlets/outlet_card', collection: @outlets_late, as: :outlet
+    hr.separator
 
-  .companies
-    .batch_block_title
-      h2 Все заведения в вашем районе
+  - if @outlets.present?
+    .companies
+      .batch_block_title
+        h2 Все заведения в вашем районе
 
-    .batch_block_cards
-      = render partial: 'outlets/outlet_card', collection: @outlets, as: :outlet
+      .batch_block_cards
+        = render partial: 'outlets/outlet_card', collection: @outlets, as: :outlet
 
-  .button_all.button показать еще
+    .button_all.button показать еще

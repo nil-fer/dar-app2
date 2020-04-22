@@ -1,5 +1,6 @@
 .batch_product_card
   .cover
+    = image_tag(product.product_pic.to_s)
   .batch_product_card_info
     .details
       h4 #{product.name}
@@ -11,5 +12,8 @@
           span шт
           span -
       .buttons
-        .button_edit.button Редактировать
-        .button_delete.button Удалить
+        = link_to 'Редактировать', edit_outlet_product_path(product, product.outlet),
+          class: 'button_edit button'
+        = link_to 'Удалить', outlet_product_path(product, product.outlet),
+          method: :delete, data: { confirm: 'Вы уверены, что хотите удалить продукт?' },
+            class: 'button_delete button'

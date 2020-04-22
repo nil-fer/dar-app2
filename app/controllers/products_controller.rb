@@ -1,27 +1,28 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+  before_action :get_outlet
   before_action :set_product, only: %i[show edit update destroy]
 
   def index
-    @products = Product.all
+    @products = @outlet.products
   end
 
   def show; end
 
   def new
-    @product = Product.new
+    @product = @outlet.products.build
   end
 
   def edit; end
 
   def create
-    @product = Product.new(product_params)
+    @product = @outlet.products.build(product_params)
     @product.user_id = current_user.id
 
     respond_to do |format|
       if @product.save
-        format.html { redirect_to @product, notice: 'Продукт добавлен.' }
+        format.html { redirect_to outlet_products_path(@outlet), notice: 'Продукт добавлен.' }
         format.json { render :show, status: :created, location: @product }
       else
         format.html { render :new }
@@ -33,7 +34,7 @@ class ProductsController < ApplicationController
   def update
     respond_to do |format|
       if @product.update(product_params)
-        format.html { redirect_to @product, notice: 'Product was successfully updated.' }
+        format.html { redirect_to outlet_product_path(@outlet), notice: 'Product was successfully updated.' }
         format.json { render :show, status: :ok, location: @product }
       else
         format.html { render :edit }
@@ -53,10 +54,22 @@ class ProductsController < ApplicationController
   private
 
   def set_product
-    @product = Product.find(params[:id])
+    @product = @outlet.products.find(params[:id])
+  end
+
+  def get_outlet
+    @outlet = Outlet.find(params[:outlet_id])
   end
 
   def product_params
-    params.require(:product).permit(:name, :weight_type, :price, :company_name, :product_pic, :category, :weight_amount)
+    params.require(:product).permit(
+      :name,
+      :weight_type,
+      :price,
+      :company_name,
+      :product_pic,
+      :weight_amoun,
+      :outlet_id
+    )
   end
 end

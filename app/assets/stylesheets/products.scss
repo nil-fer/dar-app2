@@ -122,11 +122,8 @@
 
     .cover {
       flex: 1 0 auto;
-      width: inherit;
       background-color: $orange;
-      border-radius: 6px 6px 0 0;
-      min-height: 130px;
-      max-height: 200px;
+      @include card_img(130px, 200px)
     }
 
     .batch_product_card_info {
@@ -153,7 +150,7 @@
 
         p {
           margin-top: 4px;
-          width: 176px;
+          width: 192px;
         }
 
         .buttons,
@@ -188,11 +185,8 @@
 
   .cover {
     width: inherit;
-    background-color: $orange;
-    border-radius: 6px 6px 0 0;
-    min-height: 169px;
-    max-height: 200px;
     flex: 1 0 auto;
+    @include card_img(169px, 200px)
   }
 
   .product_card_info {

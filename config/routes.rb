@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  devise_for :users, controllers: { registrations: 'registrations' }
-  resource :batches, only: %i[update create]
-  resources :products
-  resources :companies
-  resources :outlets
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  root 'pages#home'
 
   get 'pages/home'
-  get 'users/profile'
-  root 'pages#home'
+  devise_for :users, controllers: { registrations: 'registrations' }
+  resource :batches, only: %i[update create]
+  resources :companies
+
+  resources :outlets do
+    resources :products
+  end
+
 end

@@ -1,8 +1,9 @@
-.outlet_card
-  .cover
-  .outlet_card_info
-    h3 #{outlet.company.company_name + ', ' + outlet.display_title_address}
-    .details
-      p #{outlet.company.company_category}
-      span •
-      p.orange #{BatchesProduct.where(batch_id: outlet.batch).count} предложений
+= link_to outlet do
+  .outlet_card
+    .cover
+    .outlet_card_info
+      h3 #{outlet.company.company_name + ', ' + display_title_address(outlet.address)}
+      .details
+        p #{outlet.company.company_category}
+        span •
+        p.orange #{BatchesProduct.where(batch_id: outlet.batch).count} предложений

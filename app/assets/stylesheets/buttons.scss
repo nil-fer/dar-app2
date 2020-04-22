@@ -25,7 +25,8 @@
   background-color: transparent;
 }
 
-.button_edit {
+.button_edit,
+a.button_edit {
   border: 1px solid $orange;
   color: $orange;
 }

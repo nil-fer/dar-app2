@@ -35,3 +35,12 @@ $white: #fff;
 @mixin dashed_border {
   border: 2px dashed $dark_grey;
 }
+@mixin card_img($min-height, $max-height) {
+  img {
+    min-height: $min-height;
+    max-height: $max-height;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 6px 6px 0 0;
+  }
+}

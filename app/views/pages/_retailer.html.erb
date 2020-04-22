@@ -1,8 +1,0 @@
-<h5>
-  <%= batch.user.company.company_name %>
-  <%= batch.batches_products.select{|bp| bp.quantity >= 1}.count %>
-  <%= batch.activation_start.strftime("%H:%M") %>
-  <%= batch.activation_end.strftime("%H:%M") %>
-</h5>
-
-<%#= batch.batches_products.pluck(:quantity).count %>

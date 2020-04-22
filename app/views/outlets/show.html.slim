@@ -1,12 +1,12 @@
 .outlet_container
   .outlet_banner
   .outlet_info
-    h1  #{@outlet.company.company_name + ', ' + @outlet.display_title_address}
+    h1  #{@outlet.company.company_name + ', ' + display_title_address(@outlet.address)}
     h4
       span
       | акция до #{@batch.activation_end.strftime("%H:%M")}
 
-  p.location #{@outlet.display_full_address}
+  p.location #{display_full_address(@outlet.address)}
 
 .menubar
   hr.separator
@@ -18,7 +18,7 @@
 
   hr.separator
 
-- @outlet.batch.present?
+- if @batch.present?
   .batch
     .batch_block
       .batch_block_title
