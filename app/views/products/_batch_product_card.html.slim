@@ -12,8 +12,8 @@
           span 0
           span +
       .buttons
-        = link_to 'Редактировать', edit_outlet_product_path(product, product.outlet),
+        = link_to 'Редактировать', edit_outlet_product_path(product.outlet, product),
           class: 'button_edit button'
-        = link_to 'Удалить', outlet_product_path(product, product.outlet),
+        = link_to 'Удалить', outlet_product_path(product.outlet, product),
           method: :delete, data: { confirm: 'Вы уверены, что хотите удалить продукт?' },
             class: 'button_delete button'

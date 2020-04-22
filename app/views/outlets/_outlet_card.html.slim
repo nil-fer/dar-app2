@@ -1,6 +1,7 @@
 = link_to outlet do
   .outlet_card
     .cover
+      = image_tag(outlet.company.company_cover.to_s)
     .outlet_card_info
       h3 #{outlet.company.company_name + ', ' + display_title_address(outlet.address)}
       .details

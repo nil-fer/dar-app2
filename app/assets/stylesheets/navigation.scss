@@ -35,13 +35,15 @@ nav.navbar {
     align-items: center;
 
     a {
-      margin-left: 16px;
+      margin-right: 16px;
     }
 
     span {
-      width: 16px;
-      height: 16px;
-      background-color: orange;
+      width: 32px;
+      height: 32px;
+      display: block;
+      background-image: url("user_logo.png");
+      background-size: cover;
     }
   }
 }

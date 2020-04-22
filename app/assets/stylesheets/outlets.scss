@@ -46,12 +46,13 @@
   margin-bottom: 32px;
 
   .cover {
-    width: inherit;
-    background-color: $orange;
-    border-radius: 6px 6px 0 0;
-    min-height: 146px;
-    max-height: 174px;
-    flex: 1 0 auto;
+    // width: inherit;
+    // background-color: $orange;
+    // border-radius: 6px 6px 0 0;
+    // min-height: 146px;
+    // max-height: 174px;
+    // flex: 1 0 auto;
+    @include card_img(146px, 174px)
   }
 
   .outlet_card_info {

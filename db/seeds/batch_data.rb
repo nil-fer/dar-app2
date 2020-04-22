@@ -6,8 +6,28 @@
 ]
 
 def create_batches
+<<<<<<< HEAD
   100.times do
     activation = [past_activation_data, earliest_activation_data, early_activation_data, late_activation_data].sample
+=======
+  # 100.times do
+  #   activation = [past_activation_data, earliest_activation_data, early_activation_data, late_activation_data].sample
+  #
+  #   create_batch(
+  #     activation_start: activation[:start],
+  #     activation_end: activation[:end],
+  #     user_email: @user_emails.sample
+  #   )
+  # end
+
+
+  #TO DO переделать метод create_batch
+  create_batch(
+    activation_start: period(from: Time.now - 1.hours, to: Time.now),
+    activation_end: period(from: Time.now, to: Time.now + 1.hours),
+    user_email: 'manager@perekrestok.com'
+  )
+>>>>>>> a2ea1545191189ae9928171c9d909592c79f202e
 
     create_batch(
       activation_start: activation[:start],
@@ -70,6 +90,34 @@ def late_activation_data
   end: Time.now + (1..10).to_a.sample.hours
   }
 end
+#
+# def past_activation_data
+#   {
+#     start: Time.now - (11..20).to_a.sample.hours,
+#     end: Time.now - (1..10).to_a.sample.hours
+#   }
+# end
+#
+# def earliest_activation_data
+#   {
+#     start: Time.now - (1..10).to_a.sample.hours,
+#     end: Time.now + 1.hours
+#   }
+# end
+#
+# def early_activation_data
+#   {
+#     start: Time.now - (1..7).to_a.sample.hours,
+#     end: Time.now + (1..3).to_a.sample.hours
+#   }
+# end
+#
+# def late_activation_data
+#   {
+#     start: Time.now - (1..5).to_a.sample.hours,
+#     end: Time.now + (1..10).to_a.sample.hours
+#   }
+# end
 
 def create_batch(activation_start:, activation_end:, user_email:)
   user = User.find_by_email(user_email)

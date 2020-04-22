@@ -14,11 +14,11 @@ html
       .info
         = link_to root_path do
           .logo
-        .location Some location
+        /.location Some location
 
       .login
+        = link_to 'Spar на Малой Пионерской', outlet_products_path(Outlet.first)
         span
-        = link_to 'Корпоративный кабинет', root_path
 
     .container
       = yield

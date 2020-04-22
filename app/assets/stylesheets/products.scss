@@ -42,6 +42,12 @@
     }
   }
 
+  .title_input {
+    display: block;
+    border: none;
+    width: auto;
+  }
+
   h2 {
     margin-top: 48px;
     margin-left: 24px;
@@ -52,7 +58,7 @@
   hr.separator {
     width: 584px;
     position: relative;
-    margin-top: 32px;
+    margin-top: 16px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -69,8 +75,10 @@
 
   .mesure_input {
     .input {
-      margin-top: 4px;
+      margin-top: 8px;
       margin-right: 24px;
+      border: 1px solid $grey;
+      width: 108px;
     }
   }
 
@@ -88,6 +96,14 @@
     justify-content: space-between;
     margin-top: 32px;
   }
+}
+
+.file_field {
+  position: absolute;
+  cursor: pointer;
+  width: inherit;
+  height: inherit;
+  opacity: 0;
 }
 
 .products_container {
@@ -123,7 +139,7 @@
     .cover {
       flex: 1 0 auto;
       background-color: $orange;
-      @include card_img(130px, 200px)
+      @include card_img(130px, 184px)
     }
 
     .batch_product_card_info {

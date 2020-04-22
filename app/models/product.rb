@@ -3,9 +3,9 @@
 class Product < ApplicationRecord
   has_many :batches_products, dependent: :destroy
   has_many :batches, through: :batches_products
-  belongs_to :user
+  # belongs_to :user
   belongs_to :outlet
-  
+
   mount_uploader :product_pic, ProductPicUploader
 
   # data enumerizers

@@ -93,6 +93,9 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    erd (0.6.4)
+      nokogiri
+      ruby-graphviz
     erubi (1.9.0)
     execjs (2.7.0)
     ffaker (2.14.0)
@@ -169,6 +172,7 @@ GEM
     responders (3.0.0)
       actionpack (>= 5.0)
       railties (>= 5.0)
+    ruby-graphviz (1.2.4)
     ruby_dep (1.5.0)
     rubyzip (2.3.0)
     sass (3.7.4)
@@ -234,6 +238,7 @@ DEPENDENCIES
   chromedriver-helper
   coffee-rails (~> 4.2)
   devise
+  erd
   faker!
   ffaker
   jbuilder (~> 2.5)
