@@ -8,9 +8,9 @@
       .quantity
         p.dark_grey Цена за #{product.weight_amount} #{product.weight_type}
         .button_quantity.button
-          span +
-          span шт
           span -
+          span 0
+          span +
       .buttons
         = link_to 'Редактировать', edit_outlet_product_path(product, product.outlet),
           class: 'button_edit button'
