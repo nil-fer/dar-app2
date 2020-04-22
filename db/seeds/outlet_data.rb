@@ -42,10 +42,12 @@ def create_outlet(company_name:, address:)
     address: address
   )
 
-  User.where(company_id: company.id)
-    .find_by_role('manager').update(
+  user = User.where(company_id: company.id).find_by_role('manager')
+  if user
+    user.update(
       outlet_id: outlet.id
     )
+  end
 end
 
 def fake_address(street:, apartment:, block: '')

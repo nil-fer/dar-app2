@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+  #TO DO декомпозировать и перенести в модель
   def home
     earliest_start = Batch.where('DATE(activation_start) = ?' , Date.today.to_s).order(activation_start: :asc).first.activation_start
     @batches_early = Batch.where('activation_start between ? and ?', earliest_start, earliest_start + 1.hour).includes(:user, :batches_products)

@@ -5,7 +5,7 @@ class OutletsController < ApplicationController
 
   def show
     @batch = @outlet.batch
-    @products = @outlet.batch.products
+    @products = @batch.products
   end
 
   def new

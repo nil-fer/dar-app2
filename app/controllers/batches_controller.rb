@@ -18,6 +18,7 @@ class BatchesController < ApplicationController
     end
   end
 
+# TODO разобраться что делает этот метод и правильно ли он работает
   def update
     @batch = Batch.where('user_id = ? and DATE(activation_start) =?', current_user.id, Date.current.to_s).first
     @products = current_user.products
