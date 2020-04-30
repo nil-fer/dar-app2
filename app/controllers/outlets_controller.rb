@@ -58,7 +58,8 @@ class OutletsController < ApplicationController
     params.require(:outlet).permit(
       :address,
       :company_id,
-      :email
+      :email,
+      :password
     )
   end
 end

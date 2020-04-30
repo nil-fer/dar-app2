@@ -16,9 +16,14 @@ html
           .logo
         /.location Some location
 
+      - if user_signed_in?
+        .logout
+          = link_to 'Выход', sign_out_path, method: :delete
+          span
+
+      - else
       .login
-        = link_to 'Spar на Малой Пионерской', outlet_products_path(Outlet.first)
-        span
+        = link_to 'Войти', sign_in_path
 
     .container
       = yield

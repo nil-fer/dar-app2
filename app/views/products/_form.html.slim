@@ -9,7 +9,7 @@
 
   .mesure
     = select_tag :category, options_for_select(categories_collection),
-      class: 'button_category button', placeholder: 'Выберит категорию'
+      class: 'button_category button', placeholder: 'Выберитe категорию'
 
     = form.radio_button :weight_type, 'в порциях'
     = form.label :weight_type, "в порциях", value: 'в порциях'
