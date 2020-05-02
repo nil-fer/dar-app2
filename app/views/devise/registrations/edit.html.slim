@@ -1,0 +1,46 @@
+h2
+  | Edit 
+  = resource_name.to_s.humanize
+= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+  = render "devise/shared/error_messages", resource: resource
+  .field
+    = f.label :company_name
+    = f.text_field :company_name, autofocus: true, autocomplete: "company_name"
+  .field
+    = f.fields_for :address, OpenStruct.new(f.object.address) do |a|
+      div
+        = a.label 'Город'
+        = a.text_field :city, id: :city
+      div
+        = a.label 'Улица'
+        = a.text_field :street, id: :street
+      div
+        = a.label 'Дом'
+        = a.text_field :apartment, id: :apartment
+      div
+        = a.label 'Корпус'
+        = a.text_field :block, id: :block
+  .field
+    - #= f.label :email
+    - #= f.email_field :email, autofocus: true, autocomplete: "email"
+  - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+    div
+      | Currently waiting confirmation for: 
+      = resource.unconfirmed_email
+  .field
+    - #= f.label :password
+    - #= f.password_field :password, autocomplete: "new-password"
+    - # if @minimum_password_length
+    - # end
+  - #= f.label :password_confirmation
+  - #= f.password_field :password_confirmation, autocomplete: "new-password"
+  - #= f.label :current_password
+  - #= f.password_field :current_password, autocomplete: "current-password"
+  .actions
+    = f.submit "Update"
+h3
+  | Cancel my account
+p
+  | Unhappy? 
+  = button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete
+= link_to "Back", :back

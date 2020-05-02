@@ -1,7 +1,7 @@
 = form_with(model: @product, url: outlet_products_path, html: {class: "product_form"}) do |form|
   .new_product
     = form.file_field :product_pic, class: 'file_field'
-    .bred_form
+    .bread_form
 
   h2 #{form.text_field :name, placeholder: 'Введите название товара', size: 30, class: 'title_input'}
 

@@ -5,8 +5,8 @@ html
       | DAR
     = csrf_meta_tags
     = csp_meta_tag
-    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
-    = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
 
     link href="//db.onlinewebfonts.com/c/264e8767769e1b5b33e24efbecade995?family=CoFo+Sans" rel="stylesheet" type="text/css" /
   body
@@ -17,13 +17,18 @@ html
         /.location Some location
 
       - if user_signed_in?
+      
+        #= current_user.email
         .logout
-          = link_to 'Выход', sign_out_path, method: :delete
+          = link_to 'Выход', destroy_user_session_path, method: :delete
           span
 
       - else
-      .login
-        = link_to 'Войти', sign_in_path
+        .login
+          = link_to 'Войти', new_user_session_path
+
+        .login
+          = link_to 'Зарегистрироваться', new_user_registration_path
 
     .container
       = yield

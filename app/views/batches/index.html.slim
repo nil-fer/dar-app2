@@ -1,0 +1,20 @@
+h1
+  | Batches
+table
+  tbody
+    - @batches.each do |batch|
+      tr
+        td
+          = batch.discount
+        td
+          = batch.activation_start.strftime("%H:%M %p")
+        td
+          = batch.activation_end.strftime("%H:%M %p")
+        td
+          - #= link_to 'Show', batch
+        td
+          - #= link_to 'Edit', edit_batch_path(batch)
+        td
+          - #= link_to 'Destroy', batch, method: :delete, data: { confirm: 'Are you sure?' }
+br
+= link_to 'New Batch', new_batch_path

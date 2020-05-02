@@ -1,19 +1,19 @@
 .outlet_container
-  .outlet_banner
-  .outlet_info
-    h1  #{@outlet.company.company_name + ', ' + display_title_address(@outlet.address)}
-    h4
-      span
-      | акция до #{@batch.activation_end.strftime("%H:%M")}
+.outlet_banner
+.outlet_info
+  h1  #{@outlet.company.company_name + ', ' + display_title_address(@outlet.address)}
+  h4
+    span
+    | акция до #{@batch.activation_end.strftime("%H:%M")}
 
-  p.location #{display_full_address(@outlet.address)}
+p.location #{display_full_address(@outlet.address)}
 
 .menubar
   hr.separator
   .items
-    h4.menu_item Все
+    h4.menu_item onclick="openCategory(event, 'Все')" Все
     - Product.categories.each do |key, value|
-      h4.menu_item
+      h4.menu_item onclick="openCategory(event, #{key})"
         = key
 
   hr.separator
@@ -25,6 +25,24 @@
         h2 Все
 
       .batch_block_cards
-        = render partial: 'products/product_card', collection: @products, as: :product
+       = render partial: 'products/product_card', collection: @products, as: :product
+
+      .batch_block_cards#Кулинария
+       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Кулинария'), as: :outlet
+
+      .batch_block_cards#Выпечка
+       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Выпечка'), as: :outlet
+
+      .batch_block_cards#Фрукты_и_овощи
+       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Фрукты_и_овощи'), as: :outlet
+
+      .batch_block_cards#Мясо
+       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Мясо'), as: :outlet
+
+      .batch_block_cards#Напитки
+       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Напитки'), as: :outlet
+
+      .batch_block_cards#Сладкое
+       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Сладкое'), as: :outlet
 
 .banner

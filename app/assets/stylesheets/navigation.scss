@@ -58,6 +58,10 @@ nav.navbar {
     .menu_item {
       line-height: 92px;
       margin-right: 32px;
+      .active{
+        margin-top: -4px;
+        border-bottom: 4px solid $orange;
+      }
     }
 
     .menu_item:hover {
