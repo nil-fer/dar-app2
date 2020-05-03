@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  root 'pages#home'
+  root 'pages#home_page'
 
-  get 'pages/home'
+  get 'pages/home_page'
   devise_for :users
   resource :batches, only: %i[update create]
   resources :companies

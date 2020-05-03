@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class OutletsController < ApplicationController
   before_action :set_outlet, only: %i[show edit update destroy]
 
@@ -49,6 +47,10 @@ class OutletsController < ApplicationController
   end
 
   private
+
+  def set_outlet
+   @outlet = Outlet.find(params[:id])
+  end	
 
   def outlet_params
     params.require(:outlet).permit(

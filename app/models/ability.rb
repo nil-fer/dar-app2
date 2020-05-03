@@ -8,17 +8,17 @@ class Ability
     #
       user ||= User.new # guest user (not logged in)
 
-      if user.role? :moderator
-      can :manage, Post
-      end
-
-      if user.role? :admin
-      can :manage, ForumThread
-      end
-
-      if user.role? :superadmin
-      can :manage, Forum
-      end
+      # if user.role? :moderator
+      # can :manage, Post
+      # end
+      #
+      # if user.role? :admin
+      # can :manage, ForumThread
+      # end
+      #
+      # if user.role? :superadmin
+      # can :manage, Forum
+      # end
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

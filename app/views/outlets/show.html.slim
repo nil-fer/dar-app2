@@ -21,28 +21,41 @@ p.location #{display_full_address(@outlet.address)}
 - if @batch.present?
   .batch
     .batch_block
+
       .batch_block_title
-        h2 Все
+        h2 Кулинария
 
-      .batch_block_cards
-       = render partial: 'products/product_card', collection: @products, as: :product
+        .batch_block_cards#Кулинария
+      = render partial: 'products/product_card', collection: @products.where(category:'Кулинария'), as: :product
 
-      .batch_block_cards#Кулинария
-       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Кулинария'), as: :outlet
+      .batch_block_title
+        h2 Выпечка
 
-      .batch_block_cards#Выпечка
-       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Выпечка'), as: :outlet
+        .batch_block_cards#Выпечка
+      = render partial: 'products/product_card', collection: @products.where(category:'Выпечка'), as: :product
 
-      .batch_block_cards#Фрукты_и_овощи
-       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Фрукты_и_овощи'), as: :outlet
+      .batch_block_title
+        h2 Фрукты и овощи
 
-      .batch_block_cards#Мясо
-       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Мясо'), as: :outlet
+        .batch_block_cards#Фрукты_и_овощи
+      = render partial: 'products/product_card', collection: @products.where(category:'Фрукты и овощи'), as: :product
 
-      .batch_block_cards#Напитки
-       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Напитки'), as: :outlet
+      .batch_block_title
+        h2 Мясо
 
-      .batch_block_cards#Сладкое
-       = render partial: 'outlets/outlet_card', collection: @products.where(category:'Сладкое'), as: :outlet
+        .batch_block_cards#Мясо
+      = render partial: 'products/product_card', collection: @products.where(category:'Мясо'), as: :product
+
+      .batch_block_title
+        h2 Напитки
+
+        .batch_block_cards#Напитки
+      = render partial: 'products/product_card', collection: @products.where(category:'Напитки'), as: :product
+
+      .batch_block_title
+        h2 Сладкое
+
+        .batch_block_cards#Сладкое
+      = render partial: 'products/product_card', collection: @products.where(category:'Сладкое'), as: :product
 
 .banner

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
   class ApplicationController < ActionController::Base
-  load_and_authorize_resource
+  # load_and_authorize_resource
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   protected
