@@ -50,10 +50,6 @@ class OutletsController < ApplicationController
 
   private
 
-  def set_outlet
-    @outlet = Outlet.find(params[:id])
-  end
-
   def outlet_params
     params.require(:outlet).permit(
       :address,

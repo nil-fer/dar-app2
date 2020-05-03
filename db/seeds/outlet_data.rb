@@ -43,6 +43,7 @@ def create_outlet(company_name:, address:)
   )
 
   user = User.where(company_id: company.id).find_by_role('manager')
+
   if user
     user.update(
       outlet_id: outlet.id

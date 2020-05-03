@@ -1,0 +1,44 @@
+= form_with(model: batch, url: batches_path, local: true) do |form|
+  - if batch.errors.any?
+    #error_explanation
+      h2
+        = pluralize(batch.errors.count, "error")
+        |  prohibited this batch from being saved:
+      ul
+        - batch.errors.full_messages.each do |message|
+          li
+            = message
+  - products.map do |p|
+    - unless form.object.batches_products.find_by(product_id: p.id)
+      - form.object.batches_products << BatchesProduct.new(product: p)
+  = form.fields_for :batches_products do |bp_field|
+    = link_to 'New Product', new_product_path
+    - product = bp_field.object.product
+    = bp_field.hidden_field :product_id
+    = bp_field.label product.name
+    = product.category
+    = number_to_human(product.weight_amount, units: {unit: "г", thousand: "кг"})
+    = number_to_currency(product.price, unit: "₽", separator: ",", delimiter: "", format: "%n %u")
+    = bp_field.number_field :quantity
+    .product-pic
+      - if product.product_pic.present?
+        = image_tag product.product_pic.url
+    - #= link_to 'Edit', edit_product_path(product)
+    - #= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' }
+  br
+  .batch-panel
+    div
+      = form.label "Начало акции"
+      = form.time_field :activation_start
+    div
+      = form.label "Конец акции"
+      = form.time_field :activation_end
+    div
+      = form.label "Скидка на партию"
+      = form.select :discount, Batch.discounts.keys
+    p
+      - if form.object.batches_products.exists?
+        |  Позиций: 
+        = form.object.batches_products.select{|bp| bp.quantity >= 1}.count
+  .actions
+    = form.submit
