@@ -17,6 +17,7 @@
 
       .batch_block_cards
         = render partial: 'outlets/outlet_card', collection: @outlets_early, as: :outlet
+
     hr.separator
 
   - if @outlets_late.all? {|outlets_late| outlets_late.present?}
@@ -26,6 +27,7 @@
         a.orange Показать все
       .batch_block_cards
         = render partial: 'outlets/outlet_card', collection: @outlets_late, as: :outlet
+
     hr.separator
 
   - if @outlets.present?
@@ -35,5 +37,41 @@
 
       .batch_block_cards
         = render partial: 'outlets/outlet_card', collection: @outlets, as: :outlet
+
+    hr.separator
+      .batch_block_title
+        h2 Продуктовый магазин
+
+        .batch_block_cards#category_0
+      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Продуктовый магазин'), as: :outlet
+
+    hr.separator
+      .batch_block_title
+        h2 Пекарня
+
+        .batch_block_cards#category_1
+      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Пекарня'), as: :outlet
+
+    hr.separator
+      .batch_block_title
+        h2 Кофейня
+
+        .batch_block_cards#category_2
+      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Кофейня'), as: :outlet
+
+    hr.separator
+      .batch_block_title
+        h2 Ресторан
+
+        .batch_block_cards#category_3
+      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Ресторан'), as: :outlet
+
+
+    hr.separator
+      .batch_block_title
+        h2 Булочная
+
+        .batch_block_cards#category_4
+      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Булочная'), as: :outlet
 
     .button_all.button показать еще

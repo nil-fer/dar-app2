@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_03_205019) do
+ActiveRecord::Schema.define(version: 2020_05_04_233655) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -51,6 +51,7 @@ ActiveRecord::Schema.define(version: 2020_05_03_205019) do
     t.integer "company_id"
     t.string "email"
     t.integer "user_id"
+    t.integer "outlet_category"
   end
 
   create_table "products", force: :cascade do |t|

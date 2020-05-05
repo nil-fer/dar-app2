@@ -7,6 +7,7 @@ html
     = csp_meta_tag
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
+    = javascript_pack_tag 'application'
 
     link href="//db.onlinewebfonts.com/c/264e8767769e1b5b33e24efbecade995?family=CoFo+Sans" rel="stylesheet" type="text/css" /
   body
@@ -17,8 +18,8 @@ html
         /.location Some location
 
       - if user_signed_in?
-      
-        #= current_user.email
+
+        #= link_to current_user.email, users_outlet_list_url
         .logout
           = link_to 'Выход', destroy_user_session_path, method: :delete
           span

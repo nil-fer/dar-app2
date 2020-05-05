@@ -12,5 +12,6 @@ class PagesController < ApplicationController
     @outlets_early = @batches_early.limit(3).map { |batch| batch.outlet }
     @outlets_late = @batches_late.limit(9).map { |batch| batch.outlet }
     @outlets = Outlet.all
+    @companies = Company.all
   end
 end

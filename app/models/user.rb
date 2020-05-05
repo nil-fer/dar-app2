@@ -1,9 +1,5 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
-    # ROLES = %w[admin retailer manager customer banned]
-  # def role?(base_role)
-  #   ROLES.index(base_role.to_s) <= ROLES.index(role)
-  # end
 
   has_many :products
   has_one :company

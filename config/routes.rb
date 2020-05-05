@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   root 'pages#home_page'
 
   get 'pages/home_page'
+  get 'users/outlet_list'
   devise_for :users
   resource :batches, only: %i[update create]
   resources :companies

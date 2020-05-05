@@ -9,6 +9,7 @@ class CompaniesController < ApplicationController
 
   def show
     @companies_batch = Company.all
+    @outlets = @company.outlets
   end
 
   def new
@@ -19,6 +20,7 @@ class CompaniesController < ApplicationController
 
   def create
     @company = Company.new(company_params)
+    User!create(company_id: @company_id, email: params[:email], password: 'testtest')
 
     respond_to do |format|
       if @company.save

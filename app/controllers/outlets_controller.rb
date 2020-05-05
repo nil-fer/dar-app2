@@ -10,7 +10,8 @@ class OutletsController < ApplicationController
     @outlet = Outlet.new
   end
 
-  def edit; end
+  def edit
+  end
 
   def create
     @outlet = Outlet.new(outlet_params)
@@ -50,10 +51,12 @@ class OutletsController < ApplicationController
 
   def set_outlet
    @outlet = Outlet.find(params[:id])
-  end	
+  end
 
   def outlet_params
     params.require(:outlet).permit(
+      :user_id,
+      :outlet_category,
       :address,
       :company_id,
       :email,
