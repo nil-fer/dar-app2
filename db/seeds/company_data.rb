@@ -28,6 +28,7 @@ def create_company(company_name:, retailer_email:, manager_email:)
     company_cover: random_cover,
     company_category: Company.company_categories.keys.sample
   )
+  company.save!
 
   User.find_by_email(retailer_email).update(
     company_id: company.id

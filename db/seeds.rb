@@ -12,8 +12,14 @@
 end
 
 create_users
+puts 'Users were created'
 create_companies
+puts 'Companies were created'
 create_outlets
+puts 'Outlets were created'
 create_products
+puts 'Products were created'
 create_batches
+puts 'Batches were created'
 create_batches_products
+puts 'Batches Products were created'

@@ -6,9 +6,9 @@ class Product < ApplicationRecord
   # belongs_to :user
   belongs_to :outlet
 
-  mount_uploader :product_pic, ProductPicUploader
+  # mount_uploader :product_pic, ProductPicUploader
 
   # data enumerizers
   enum weight_type: ['на вес', 'в порциях']
-  enum category: ['Кулинария', 'Выпечка', 'Фрукты и овощи', 'Мясо', 'Напитки', 'Сладкое']
+  enum category: ['Кулинария', 'Бакалея', 'Вегетарианское', 'Напитки', 'Сладкое']
 end

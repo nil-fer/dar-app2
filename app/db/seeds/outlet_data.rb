@@ -39,7 +39,8 @@ def create_outlet(company_name:, address:)
 
   outlet = Outlet.create(
     company_id: company.id,
-    address: address
+    address: address,
+    outlet_category: company.company_category
   )
 
   user = User.where(company_id: company.id).find_by_role('manager')

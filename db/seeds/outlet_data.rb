@@ -36,15 +36,15 @@ end
 
 def create_outlet(company_name:, address:)
   company = Company.find_by(company_name: company_name)
+  user = User.where(company_id: company.id).find_by_role('manager')
 
   outlet = Outlet.create(
     company_id: company.id,
     address: address,
-    outlet_category: company.company_category
+    outlet_category: company.company_category,
+    user_id: user.id
   )
-
-  user = User.where(company_id: company.id).find_by_role('manager')
-
+  outlet.save!
   if user
     user.update(
       outlet_id: outlet.id
