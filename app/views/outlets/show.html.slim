@@ -11,55 +11,71 @@
 .menubar
   hr.separator
   .items
-    h4.menu_item
     - Product.categories.each do |key, i|
       h4.menu_item onclick="checkClick(this, '#{i}')" #{key}
 
   hr.separator
 
-- if @batch.present?
+- if @products.where(category:'Кулинария').present?
    .batch
     .batch_block
      .batch_block_title
-     h2 Кулинария
-
-     .batch_block_cards#category_0
+     h2#category_0 Кулинария
+     .batch_block_cards
       = render partial: 'products/product_card', collection: @products.where(category:'Кулинария'), as: :product
 
     hr.separator
 
+- if @products.where(category:'Бакалея').present?
+   .batch
     .batch_block
      .batch_block_title
-     h2 Бакалея
+     h2#category_1 Бакалея
 
-     .batch_block_cards#category_1
+     .batch_block_cards
       = render partial: 'products/product_card', collection: @products.where(category:'Бакалея'), as: :product
 
     hr.separator
 
+- if @products.where(category:'Вегетарианское').present?
+   .batch
     .batch_block
      .batch_block_title
-     h2 Вегетарианское
+     h2#category_2 Вегетарианское
 
-     .batch_block_cards#category_2
+     .batch_block_cards
       = render partial: 'products/product_card', collection: @products.where(category:'Вегетарианское'), as: :product
 
     hr.separator
 
+- if @products.where(category:'Напитки').present?
+   .batch
     .batch_block
      .batch_block_title
-     h2 Напитки
+     h2#category_3 Напитки
 
-     .batch_block_cards#category_3
+     .batch_block_cards
      = render partial: 'products/product_card', collection: @products.where(category:'Напитки'), as: :product
 
     hr.separator
 
+- if @products.where(category:'Сладкое').present?
+   .batch
     .batch_block
      .batch_block_title
-     h2 Сладкое
+     h2#category_4 Сладкое
 
-     .batch_block_cards#category_4
+     .batch_block_cards
      = render partial: 'products/product_card', collection: @products.where(category:'Сладкое'), as: :product
 
 .banner
+
+.modal.hide.fade
+  .modal-header
+    button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+    h3.modal-heading Modal header
+  .modal-body
+    p One fine body…
+  .modal-footer
+    a.btn data-dismiss="modal" href="#"  Close
+    a.btn.btn-primary href="#"  Add to Cart

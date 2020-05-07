@@ -13,6 +13,16 @@ $white: #fff;
     border-top: 1px solid $grey;
   }
 }
+
+@mixin rectangle {
+  .rectangle {
+    width: 400px;
+    height: 380px;
+    color: $white;
+  }
+}
+
+
 @mixin border_radius {
   border-radius: 6px;
 }

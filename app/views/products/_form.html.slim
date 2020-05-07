@@ -7,7 +7,7 @@
 
   hr.separator
 
-  .mesure
+  .measure
     = select_tag :category, options_for_select(categories_collection),
       class: 'button_category button', placeholder: 'Выберитe категорию'
 
@@ -18,11 +18,11 @@
     = form.label :weight_type, "на вес", value: 'на вес'
 
   .measure_inputs
-    .mesure_input
+    .measure_input
       p #{form.label :weight_amount, 'Вес порций'}
       = form.text_field :weight_amount, value: 0, class: 'input'
 
-    .mesure_input
+    .measure_input
       p #{ form.label :price, 'Цена без скидки' }
       = form.text_field :price, value: 0, class: 'input'
 

@@ -1,6 +1,7 @@
 .batch_product_card
   .cover
-    = image_tag(product.product_pic.to_s)
+    = image_tag product.product_pic.to_s 
+
   .batch_product_card_info
     .details
       h4 #{product.name}

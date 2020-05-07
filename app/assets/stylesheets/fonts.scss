@@ -1,46 +1,64 @@
-@import url(//db.onlinewebfonts.com/c/264e8767769e1b5b33e24efbecade995?family=CoFo+Sans);
-@import url(//db.onlinewebfonts.com/c/952bab25f6798d6bb1937d67e9bee4dd?family=Sans);
+
 @import 'mixins';
+
 @font-face {
-  font-family: "CoFo Sans";
-  src: url("../fonts/CoFoSans-Medium.ttf") format("truetype"), url("../fonts/CoFoSans-Medium.ttf") format("truetype"), url("../fonts/CoFoSans-Bold.ttf") format("truetype"), url("../fonts/CoFoSans-Bold.ttf") format("truetype");
+  font-family: 'CoFo Sans Medium';
+  src: font-url("CoFoSans-Medium.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: 'CoFo Sans Regular';
+  src: font-url("CoFoSans-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'CoFo Sans Bold';
+  src: font-url("CoFoSans-Bold.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: 'CoFo Sans Black';
+  src: font-url("CoFoSans-Black.ttf") format("truetype");
+}
 
 a,
 div,
-h1,
 h2,
 h3,
 h4,
 p {
   color: $black;
-  font-family: "CoFo Sans";
+  font-family: 'CoFo Sans Regular';
 }
 
 h1 {
   font-size: 48px;
   line-height: 72px;
+  font-family: 'CoFo Sans Bold';
 }
 
 h2 {
   font-size: 32px;
+  font-family: 'CoFo Sans Bold';
 }
 
 h3 {
   font-size: 24px;
   line-height: 31px;
+  font-family: 'CoFo Sans Medium';
 }
 
 h4 {
   font-size: 18px;
   line-height: 27px;
   font-style: bold;
+  font-family: 'CoFo Sans Medium';
 }
 
 p {
   font-size: 16px;
   line-height: 16px;
+  font-family: 'CoFo Sans Regular';
 }
 
 p.location {

@@ -13,10 +13,12 @@
 //= require rails-ujs
 //= require activestorage
 //= require_tree .
+//= require jquery
+//= require jquery_ujs
 
 
 const menu_items = document.getElementsByClassName("menu_item")
 
 function checkClick(e, key){
-  document.getElementById('category_'+key).scrollIntoView()
+  document.getElementById('category_'+key).scrollIntoView(true)
 }
