@@ -2,6 +2,7 @@
 
 class Company < ApplicationRecord
   belongs_to :user
+  accepts_nested_attributes_for :user 
   has_many :outlets
   mount_uploader :company_cover, CompanyCoverUploader
 

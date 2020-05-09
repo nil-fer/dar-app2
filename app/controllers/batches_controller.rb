@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class BatchesController < ApplicationController
-  # before_action :authenticate_user!
+   
 
   def create
     @batch = current_user.batches.build(batch_params)

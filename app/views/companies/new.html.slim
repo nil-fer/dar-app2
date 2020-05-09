@@ -1,0 +1,32 @@
+h1 Ты можешь создать форму
+p
+= form_with(model: @company, local: true) do |form|
+  - if @company.errors.any?
+    #error_explanation
+      h2
+        = pluralize(@company.errors.count, "error")
+        |  prohibited this outlet from being saved:
+      ul
+        - @company.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :company_name
+    = form.text_field :company_name
+
+  .field
+    = form.label :company_category
+    = select_tag :company_category, options_for_select(company_categories)
+
+
+  h3 Создать нового пользователя:
+
+  = form.fields_for :user, User.new do |user_attributes|
+    = user_attributes.label :name, "email:"
+    = user_attributes.email_field :email
+
+    = user_attributes.label :password, "password:"
+    = user_attributes.text_field :password
+
+  .actions
+    = form.submit

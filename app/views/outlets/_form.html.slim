@@ -1,0 +1,24 @@
+= form_with(model: outlet, local: true) do |form|
+  - if outlet.errors.any?
+    #error_explanation
+      h2
+        = pluralize(outlet.errors.count, "error")
+        |  prohibited this outlet from being saved:
+      ul
+        - outlet.errors.full_messages.each do |message|
+          li
+            = message
+  .field
+    = form.label :name
+    = form.text_field :name
+  .field
+    = form.label :outlet_category
+    = form.text_field :outlet_category
+  .field
+    = form.label :company_id
+    = form.text_field :company_id
+  .field
+    = form.label :user_id
+    = form.text_field :user_id
+  .actions
+    = form.submit

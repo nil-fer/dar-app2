@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
+   
   # TO DO указать экшны в которых должен вызываться :get_outlet
   before_action :get_outlet
   before_action :set_product, only: %i[show edit update destroy]

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class CompaniesController < ApplicationController
+
   before_action :set_company, only: %i[show edit update destroy]
 
   def index
@@ -8,24 +9,29 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @companies_batch = Company.all
+    # @companies_batch = Company.all
+    # @outlets = @company.outlets
     @outlets = @company.outlets
   end
 
   def new
     @company = Company.new
+    @company.build_user
   end
 
   def edit; end
 
   def create
     @company = Company.new(company_params)
-    User!create(company_id: @company_id, email: params[:email], password: 'testtest')
+    # @company.user = current_user
+    # current_user.company = @company
 
     respond_to do |format|
       if @company.save
         format.html { redirect_to @company, notice: 'Company was successfully created.' }
         format.json { render :show, status: :created, location: @company }
+
+        User.find(@company.user_id).update(company_id: @company.id)
       else
         format.html { render :new }
         format.json { render json: @company.errors, status: :unprocessable_entity }
@@ -60,6 +66,6 @@ class CompaniesController < ApplicationController
   end
 
   def company_params
-    params.fetch(:company, {})
+    params.require(:company).permit(:company_name, :company_category, :user_id, user_attributes: [:email, :password, :company_id])
   end
 end

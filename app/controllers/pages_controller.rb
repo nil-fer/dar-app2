@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
+   
   #TO DO декомпозировать и перенести в модель
   def home_page
     @products = Product.all

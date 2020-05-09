@@ -1,4 +1,5 @@
 class OutletsController < ApplicationController
+   
   before_action :set_outlet, only: %i[show edit update destroy]
 
   def show
@@ -7,7 +8,7 @@ class OutletsController < ApplicationController
   end
 
   def new
-    @outlet = Outlet.new
+    @outlet = Outlet.find(params[:id])
   end
 
   def edit

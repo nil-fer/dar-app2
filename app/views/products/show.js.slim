@@ -1,0 +1,5 @@
+| console.log('I am working'); $modal = $('.modal'), $modalBody = $('.modal .modal-body'), $modalHeading = $('.modal .modal-heading'); console.log($modalHeading); $modalHeading.html("
+= @product.name
+| "); $modalBody.html("
+= escape_javascript(render 'show', product: @product)
+| "); $modal.modal(); 
