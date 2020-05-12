@@ -1,5 +1,5 @@
 = link_to outlet do
-  .outlet_card  
+  .outlet_card
     .cover
       = image_tag(outlet.company.company_cover.to_s)
     .outlet_card_info
@@ -7,4 +7,4 @@
       .details
         p #{outlet.company.company_category}
         span •
-        p.orange #{BatchesProduct.where(batch_id: outlet.batch).count} предложений
+        p.orange #{batch.products_count} предложений

@@ -1,11 +1,12 @@
 .batch_product_card
   .cover
-    = image_tag product.product_pic.to_s 
+    = image_tag product.product_pic.to_s
 
   .batch_product_card_info
     .details
       h4 #{product.name}
       h3 #{product.price} &#8381;
+      h3 #{product.price-(product.price*discount/100)} &#8381;
       .quantity
         p.dark_grey Цена за #{product.weight_amount} #{product.weight_type}
         .button_quantity.button

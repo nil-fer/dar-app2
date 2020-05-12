@@ -1,18 +1,24 @@
 # frozen_string_literal: true
 
 class PagesController < ApplicationController
-   
-  #TO DO декомпозировать и перенести в модель
   def home_page
-    @products = Product.all
-    earliest_start = Batch.where('DATE(activation_start) = ?' , Date.today.to_s).order(activation_start: :asc).first.activation_start
-    @batches_early = Batch.where('activation_start between ? and ?', earliest_start, earliest_start + 1.hour).includes(:user, :batches_products)
-    @batches_late = Batch.where('activation_start >= ?', earliest_start + 1.hour).includes(:user, :batches_products)
-    @batches = Batch.all
-
-    @outlets_early = @batches_early.limit(3).map { |batch| batch.outlet }
-    @outlets_late = @batches_late.limit(9).map { |batch| batch.outlet }
-    @outlets = Outlet.all
-    @companies = Company.all
+    @current_batches =
+      Batch
+      .with_products
+      .where('activation_start < ? AND activation_end > ?', Time.current, Time.current)
+      .limit(3)
+    @future_batches =
+      Batch
+      .with_products
+      .where(
+        'DATE(activation_start) = ? AND activation_start > ?' , Date.current.to_s, Time.current
+      )
+      .limit(9)
+    @all_batches =
+      Batch
+      .with_products
+      .where(
+        'DATE(activation_start) = ? AND activation_end > ?' , Date.current.to_s, Time.current
+      )
   end
 end

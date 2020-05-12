@@ -1,6 +1,7 @@
 def create_outlets
   create_outlet(
     company_name: 'Перекресток',
+    manager_email: 'manager@perekrestok.com',
     address: fake_address(
       street: "ул. Новый Арбат",
       apartment: "15",
@@ -9,6 +10,7 @@ def create_outlets
   )
   create_outlet(
     company_name: 'Братья Караваевы',
+    manager_email: 'manager@karavaev_brothers.com',
     address: fake_address(
       street: "ул. Спиридоновка",
       apartment: "25",
@@ -18,6 +20,7 @@ def create_outlets
 
   create_outlet(
     company_name: 'МакДоналдс',
+    manager_email: 'manager@mcdonalds.com',
     address: fake_address(
       street: "ул. Никольская",
       apartment: "10"
@@ -26,6 +29,7 @@ def create_outlets
 
   create_outlet(
     company_name: 'Французская пекарня',
+    manager_email: 'manager@french_bakery.com',
     address: fake_address(
       street: "ул. Мясницкая",
       apartment: "17",
@@ -34,23 +38,21 @@ def create_outlets
   )
 end
 
-def create_outlet(company_name:, address:)
+def create_outlet(company_name:, address:, manager_email:)
   company = Company.find_by(company_name: company_name)
-  user = User.where(company_id: company.id).find_by_role('manager')
 
   outlet = Outlet.create(
     company_id: company.id,
     address: address,
-    outlet_category: company.company_category,
-    user_id: user.id
+    outlet_category: company.company_category
   )
   outlet.save!
-  if user
-    user.update(
-      outlet_id: outlet.id
-    )
-  end
+
+  User.find_by_email(manager_email).update(
+    outlet_id: outlet.id
+  )
 end
+
 
 def fake_address(street:, apartment:, block: '')
   {

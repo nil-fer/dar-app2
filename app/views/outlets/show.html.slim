@@ -1,81 +1,44 @@
 .outlet_container
- .outlet_banner
- .outlet_info
-  h1  #{@outlet.company.company_name + ', ' + display_title_address(@outlet.address)}
-  h4
-    span
-    | акция до #{@batch.activation_end.strftime("%H:%M")}
+  .outlet_banner
+  .outlet_info
+    h1  #{@outlet.company.company_name + ', ' + display_title_address(@outlet.address)}
+    - if @batch
+      h4
+        span
+        | акция до #{@batch.activation_end.strftime("%H:%M")}
 
- p.location #{display_full_address(@outlet.address)}
+  p.location #{display_full_address(@outlet.address)}
 
-.menubar
-  hr.separator
-  .items
-    - Product.categories.each do |key, i|
-      h4.menu_item onclick="checkClick(this, '#{i}')" #{key}
-
-  hr.separator
-
-- if @products.where(category:'Кулинария').present?
-   .batch
-    .batch_block
-     .batch_block_title
-     h2#category_0 Кулинария
-     .batch_block_cards
-      = render partial: 'products/product_card', collection: @products.where(category:'Кулинария'), as: :product
+- if @products.present?
+  .menubar
+    hr.separator
+    .items
+      - Product.categories.each do |key, i|
+        h4.menu_item onclick="checkClick(this, '#{i}')" #{key}
 
     hr.separator
 
-- if @products.where(category:'Бакалея').present?
-   .batch
-    .batch_block
-     .batch_block_title
-     h2#category_1 Бакалея
-
-     .batch_block_cards
-      = render partial: 'products/product_card', collection: @products.where(category:'Бакалея'), as: :product
-
-    hr.separator
-
-- if @products.where(category:'Вегетарианское').present?
-   .batch
-    .batch_block
-     .batch_block_title
-     h2#category_2 Вегетарианское
-
-     .batch_block_cards
-      = render partial: 'products/product_card', collection: @products.where(category:'Вегетарианское'), as: :product
+  - Product.categories.each do |category_name, index|
+    - products = @products.where(category: category_name)
+    - next if products.blank?
+    .batch
+      .batch_block
+        .batch_block_title
+          h2[id = "category_#{index}"] = category_name
+        .batch_block_cards
+          - @products.each do |product|
+            = render partial: 'products/product_card', locals: {product: product, discount: @batch.discount.to_i}
 
     hr.separator
 
-- if @products.where(category:'Напитки').present?
-   .batch
-    .batch_block
-     .batch_block_title
-     h2#category_3 Напитки
+  .banner
 
-     .batch_block_cards
-     = render partial: 'products/product_card', collection: @products.where(category:'Напитки'), as: :product
-
-    hr.separator
-
-- if @products.where(category:'Сладкое').present?
-   .batch
-    .batch_block
-     .batch_block_title
-     h2#category_4 Сладкое
-
-     .batch_block_cards
-     = render partial: 'products/product_card', collection: @products.where(category:'Сладкое'), as: :product
-
-.banner
-
-.modal.hide.fade
-  .modal-header
-    button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
-    h3.modal-heading Modal header
-  .modal-body
-    p One fine body…
-  .modal-footer
-    a.btn data-dismiss="modal" href="#"  Close
-    a.btn.btn-primary href="#"  Add to Cart
+  .modal.hide.fade
+    .modal-header
+      button.close aria-hidden="true" data-dismiss="modal" type="button"  &times;
+      h3.modal-heading Modal header
+    .modal-body
+      p One fine body…
+    .modal-footer
+      a.btn data-dismiss="modal" href="#"  Close
+      a.btn.btn-primary href="#"  Add to Cart

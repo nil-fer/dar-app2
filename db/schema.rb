@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_04_233655) do
+ActiveRecord::Schema.define(version: 2020_05_12_160843) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_233655) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "company_name"
-    t.integer "user_id"
     t.string "logo"
     t.string "company_cover"
     t.integer "company_category"
@@ -50,7 +49,6 @@ ActiveRecord::Schema.define(version: 2020_05_04_233655) do
     t.hstore "address"
     t.integer "company_id"
     t.string "email"
-    t.integer "user_id"
     t.integer "outlet_category"
   end
 

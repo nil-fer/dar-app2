@@ -9,69 +9,49 @@
   hr.separator
 
 .batch
-  - if @outlets_early.all? {|outlets_early| outlets_early.present?}
+  - if @current_batches.any?
     .batch_block
       .batch_block_title
         h2 Активные акции
         a.orange Показать все
 
       .batch_block_cards
-        = render partial: 'outlets/outlet_card', collection: @outlets_early, as: :outlet
+        - @current_batches.each do |batch|
+          = render partial: 'outlets/outlet_card', locals: { outlet: batch.outlet, batch: batch }
 
     hr.separator
 
-  - if @outlets_late.all? {|outlets_late| outlets_late.present?}
+  - if @future_batches.any?
     .batch_block
       .batch_block_title
         h2 Будущие акции
         a.orange Показать все
       .batch_block_cards
-        = render partial: 'outlets/outlet_card', collection: @outlets_late, as: :outlet
+        - @future_batches.each do |batch|
+          = render partial: 'outlets/outlet_card',locals: { outlet: batch.outlet, batch: batch }
 
     hr.separator
 
-  - if @outlets.present?
+  - if @all_batches.any?
     .companies
       .batch_block_title
         h2 Все заведения в вашем районе
 
       .batch_block_cards
-        = render partial: 'outlets/outlet_card', collection: @outlets, as: :outlet
+        - @all_batches.each do |batch|
+          = render partial: 'outlets/outlet_card',locals: { outlet: batch.outlet, batch: batch }
 
-    hr.separator
-      .batch_block_title
-        h2 Продуктовый магазин
+    - Outlet.outlet_categories.each do |category_name, index|
+      - category_batches = @all_batches.where(outlets: { outlet_category: category_name })
+      - next if category_batches.blank?
 
-        .batch_block_cards#category_0
-      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Продуктовый магазин'), as: :outlet
+      hr.separator
+      .batch_block
+        .batch_block_title
+          h2 = category_name
 
-    hr.separator
-      .batch_block_title
-        h2 Пекарня
-
-        .batch_block_cards#category_1
-      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Пекарня'), as: :outlet
-
-    hr.separator
-      .batch_block_title
-        h2 Кофейня
-
-        .batch_block_cards#category_2
-      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Кофейня'), as: :outlet
-
-    hr.separator
-      .batch_block_title
-        h2 Ресторан
-
-        .batch_block_cards#category_3
-      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Ресторан'), as: :outlet
-
-
-    hr.separator
-      .batch_block_title
-        h2 Булочная
-
-        .batch_block_cards#category_4
-      = render partial: 'outlets/outlet_card', collection: @outlets.where(outlet_category:'Булочная'), as: :outlet
+        .batch_block_cards[id = "category_#{index}"]
+          - category_batches.each do |batch|
+            = render partial: 'outlets/outlet_card',locals: { outlet: batch.outlet, batch: batch }
 
     .button_all.button показать еще

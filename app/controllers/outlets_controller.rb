@@ -1,10 +1,12 @@
 class OutletsController < ApplicationController
-   
+
   before_action :set_outlet, only: %i[show edit update destroy]
 
   def show
-    @batch = @outlet.batch
-    @products = @batch.products
+    @batch = @outlet.batches.where(
+      'DATE(activation_start) = ? AND activation_end > ?' , Date.current.to_s, Time.current
+    ).first
+    @products = @batch&.products
   end
 
   def new

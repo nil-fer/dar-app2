@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 class User < ActiveRecord::Base
 
+  belongs_to :company, optional: true
+  belongs_to :outlet, optional: true
   has_many :products
-  has_one :company
   has_many :batches
-  has_one :outlet
   accepts_nested_attributes_for :outlet
 
   devise :database_authenticatable, :registerable,

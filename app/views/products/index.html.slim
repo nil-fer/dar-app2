@@ -9,4 +9,5 @@
       .add
       h3 Добавить продукт
 
-  = render partial: 'batch_product_card', collection: @products, as: :product
+  - @products.each do |product|
+    = render partial: 'batch_product_card', locals: {product: product, discount: @batch.discount.to_i}
