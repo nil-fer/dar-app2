@@ -43,7 +43,7 @@ gem 'slim'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 gem 'pry'
 
 # Reduces boot times through caching; required in config/boot.rb
